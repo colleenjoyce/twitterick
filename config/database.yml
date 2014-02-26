@@ -3,21 +3,15 @@ development:
   encoding: unicode
   database: twitterick_development
   pool: 5
-  username: colleenjoyce
-  password:
-
+  
 test:
   adapter: postgresql
   encoding: unicode
   database: twitterick_test
   pool: 5
-  username: colleenjoyce
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: twitterick_production
   pool: 5
-  username: colleenjoyce
-  password:

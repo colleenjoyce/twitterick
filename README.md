@@ -1,4 +1,5 @@
-twitterick
-==========
+# Twitterick 
 
-The third project for GA's Web Development Immersive program by Colleen Joyce and 
+## Overview
+
+**Twitterick** constructs limericks from selected tweets
