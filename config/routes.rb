@@ -1,4 +1,5 @@
 Twitterick::Application.routes.draw do
   devise_for :users
-  root :to => "home#index"  
+  root :to => "poems#index"  
+  resources :poems
 end
