@@ -1,4 +1,5 @@
 require 'twitter'
+require 'httparty'
 
 @client = Twitter::REST::Client.new do |config|
 	config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
@@ -21,4 +22,11 @@ def get_all_tweets(user)
 	end
 end
 
-# @tweets = get_all_tweets("")
+#@tweets = get_all_tweets("")
+
+def parse_json(url)
+JSON.parse(HTTParty.get(url).body)
+end
+
+url = "http://rhymebrain.com/talk?function=getRhymes&word=hello"
+@rhymes = parse_json(url)
