@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140226201035) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "twitter_handle"
+    t.integer  "twitter_handle_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
