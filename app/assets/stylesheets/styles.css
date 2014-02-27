@@ -1,0 +1,7 @@
+.user-sign {
+width:350px;
+margin:0 auto;
+}
+.user-sign input, .user-sign select, .user-sign button{
+margin-bottom:5px;
+}
