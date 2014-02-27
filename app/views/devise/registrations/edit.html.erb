@@ -33,17 +33,15 @@
   <form role="form" action="/users" method="post">
     <h2>Edit Profile</h2>
     <input name="_method" type="hidden" value="put">
+
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="text" class="form-control" placeholder="Name" name="user[name]" value="<%= @user.name %>">
-    <select class="form-control" name="user[monster]">
-      <option value="z">Zombie</option>
-      <option value="r">Robot</option>
-    </select>
-    <input type="text" class="form-control" placeholder="Picture URL" name="user[pic_url]" value="<%= @user.pic_url %>">
+
     <input type="email" class="form-control" placeholder="Email" name="user[email]" value="<%= @user.email %>">
     <input type="password" class="form-control" placeholder="Password" required="true" name="user[password]">
     <input type="password" class="form-control" placeholder="Password Confirmation" required="true" name="user[password_confirmation]">
     <input type="password" class="form-control" placeholder="Password" name="user[current_password]" required="true">
+
+    
     <button class="btn btn-lg btn-primary btn-block" type="submit">Edit Profile</button>
   </form>
   <form role="form" action="/users" method="post">
