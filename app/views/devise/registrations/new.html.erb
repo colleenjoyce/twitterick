@@ -16,3 +16,20 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<form class="user-sign" role="form" action="/users" method="post">
+<h2>Sign up</h2>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="hidden" name="user[remember_me]" value="0">
+<input type="text" class="form-control" placeholder="Name" required="true" name="user[name]">
+<select class="form-control" required="true" name="user[monster]">
+<option value="z">Zombie</option>
+<option value="r">Robot</option>
+</select>
+<input type="text" class="form-control" placeholder="Picture URL" name="user[pic_url]">
+<input type="email" class="form-control" placeholder="Email" required="true" name="user[email]">
+<input type="password" class="form-control" placeholder="Password" required="true" name="user[password]">
+<input type="password" class="form-control" placeholder="Password Confirmation" required="true" name="user[password_confirmation]">
+
+<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+</form>
