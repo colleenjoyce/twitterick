@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Tweet.create(text: "At this point, I don't know what my milkshake brings.", num_syllable: 11, twitter_handle_id: "@kelleydmcguire", last_word: "brings", twitter_status_url: "https://twitter.com/kelleydmcguire/statuses/317468526514413569")
-Tweet.create(text: "Wake up to the most ridiculous texts some mornings...", num_syllable: 13, twitter_handle_id: "CharlotteLegge", last_word: "mornings", twitter_status_url: "https://twitter.com/CharlotteLegge/statuses/316525495984455680")
+Tweet.create(text: "At this point, I don't know what my milkshake brings.", twitter_handle_id: "@kelleydmcguire", last_word: "brings", twitter_status_url: "https://twitter.com/kelleydmcguire/statuses/317468526514413569")
+Tweet.create(text: "Wake up to the most ridiculous texts some mornings...", twitter_handle_id: "CharlotteLegge", last_word: "mornings", twitter_status_url: "https://twitter.com/CharlotteLegge/statuses/316525495984455680")
 Tweet.create(text: "Bored anything to do ?", twitter_handle_id: "Shurog_AB", last_word: "do", twitter_status_url: "https://twitter.com/Shurog_AB/statuses/316583637418127360")
 Tweet.create(text: "Stuff too do ! Stuff to doo .", twitter_handle_id: "X_WeCousins", last_word: "doo", twitter_status_url: "https://twitter.com/X_WeCousins/status/317071401456631808")
 Tweet.create(text: "When I listen to drake I text with my feelings", twitter_handle_id: "@iNBA_2k13", last_word: "feelings", twitter_status_url: "https://twitter.com/iNBA_2k13/statuses/316238467170443264")

@@ -1,8 +1,6 @@
-require 'string.rb'
+require 'string'
 
 class Tweet < ActiveRecord::Base
-include String 
-
 	belongs_to :twitter_handle
 	belongs_to :poem_tweet 
 	has_many :poems, through: :poem_tweets
@@ -14,5 +12,4 @@ include String
 		self.num_syllable = self.text.syllable_count
 		self.save
 	end
-
 end
