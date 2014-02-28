@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140228193723) do
   create_table "tweets", force: true do |t|
     t.string   "text"
     t.integer  "num_syllables"
-    t.string   "twitter_handle_id"
+    t.integer  "twitter_handle_id"
     t.string   "last_word"
     t.datetime "created_at"
     t.datetime "updated_at"
