@@ -31,7 +31,6 @@ require 'numbers_and_words'
 @people["barackobama"] = get_all_tweets("barackobama")
 
 
-
 @people.each do |person|
 	person.each do |tweet|
 	Tweet.create(
@@ -43,6 +42,14 @@ require 'numbers_and_words'
 	)
 end
 end
+
+@tweets = nil
+begin
+	@tweets = get_all_tweets("###")
+rescue Exception => e
+	puts e
+end
+
 
 #  def parse_json(url)
 # JSON.parse(HTTParty.get(url).body)

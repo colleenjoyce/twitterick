@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140228193723) do
     t.datetime "last_searched"
   end
 
-  add_index "twitter_handles", ["last_searched"], name: "index_twitter_handles_on_last_searched", using: :btree
+  add_index "twitter_handles", ["handle"], name: "index_twitter_handles_on_handle", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
