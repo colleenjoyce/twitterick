@@ -1,0 +1,10 @@
+<h1>Poem</h1>
+<ul>
+<% @poems.each_with_index do |line, index| %>
+	<li>
+	<a href="<%= @urls[index] %>" target="_blank"> 
+		<%= line %>
+	</a>
+	</li>
+<% end %>
+</ul>

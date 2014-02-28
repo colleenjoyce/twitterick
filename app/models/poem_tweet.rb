@@ -1,4 +1,4 @@
 class PoemTweet < ActiveRecord::Base
-	has_many :tweets
-	has_many :poems
+	belongs_to :tweet
+	belongs_to :poem
 end

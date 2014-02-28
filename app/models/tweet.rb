@@ -23,7 +23,7 @@ end
 
 class Tweet < ActiveRecord::Base
 	belongs_to :twitter_handle
-	belongs_to :poem_tweet 
+	has_many :poem_tweets 
 	has_many :poems, through: :poem_tweets
 
 	validates :tweet_status_num, :twitter_handle_id, :tweet_status_url, presence: true
