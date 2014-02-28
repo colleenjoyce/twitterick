@@ -2,7 +2,7 @@ class CreateTweets < ActiveRecord::Migration
   def change
     create_table :tweets do |t|
       t.string :text
-      t.integer :num_syllable
+      t.integer :num_syllables
       t.string :twitter_handle_id
       t.string :last_word
 

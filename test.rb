@@ -23,14 +23,14 @@ require 'numbers_and_words'
  	end
  end
 
-# # #@tweets = get_all_tweets("")
+@tweets = get_all_tweets("")
 
- def parse_json(url)
-JSON.parse(HTTParty.get(url).body)
-end
+#  def parse_json(url)
+# JSON.parse(HTTParty.get(url).body)
+# end
 
- url = "http://rhymebrain.com/talk?function=getRhymes&word=hello"
- @rhymes = parse_json(url)
+#  url = "http://rhymebrain.com/talk?function=getRhymes&word=hello"
+#  @rhymes = parse_json(url)
 
 # class String
   
