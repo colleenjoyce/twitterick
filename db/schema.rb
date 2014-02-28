@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228004002) do
+ActiveRecord::Schema.define(version: 20140228193723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,10 @@ ActiveRecord::Schema.define(version: 20140228004002) do
     t.string   "handle"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_searched"
   end
+
+  add_index "twitter_handles", ["last_searched"], name: "index_twitter_handles_on_last_searched", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

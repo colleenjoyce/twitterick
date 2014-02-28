@@ -25,56 +25,28 @@ require 'numbers_and_words'
 
 @tweets = get_all_tweets("")
 
+@people = Hash.new 
+@people["justinbieber"] = get_all_tweets("justinbieber")
+@people["rainnwilson"] = get_all_tweets("rainnwilson")
+@people["barackobama"] = get_all_tweets("barackobama")
+
+
+
+@people.each do |person|
+	person.each do |tweet|
+	Tweet.create(
+		text: tweet.text, 
+		twitter_handle_id: tweet.user.screen_name,
+		tweet_status_url: "https://twitter.com" + tweet.url.path, 
+		tweet_status_num: tweet.id,
+		last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
+	)
+end
+end
+
 #  def parse_json(url)
 # JSON.parse(HTTParty.get(url).body)
 # end
 
 #  url = "http://rhymebrain.com/talk?function=getRhymes&word=hello"
 #  @rhymes = parse_json(url)
-
-# class String
-  
-
-#   def syllable_count
-#     consonants = "bcdfghjklmnpqrstvwxz"
-#     vowels = "aeiouy"
-#     processed = self.downcase
-    
-#     numbers = processed.scan(/[\d+[\,*]]+/)
-# 	processed.gsub!(/[\d+[\,*]]+/, " ")
-# 	numbers.each do |number|
-# 		number.gsub!(",", "")
-# 		processed += " " + I18n.with_locale(:en) { number.to_i.to_words }
-# 	end
-    
-#     suffix_bonus = 0
-#     #puts "*** 0 #{processed}"
-#     if processed.match(/ly$/)
-#       suffix_bonus = 1
-#       processed.gsub!(/ly$/, "")
-#     end
-#     if processed.match(/[a-z]ed$/)
-#       # Not counting "ed" as an extra symbol. 
-#       # So 'blessed' is assumed to be said as 'blest'
-#       suffix_bonus = 0 
-#       processed.gsub!(/ed$/, "")
-#     end
-#     #puts "*** 1 #{processed}"
-#     processed.gsub!(/iou|eau|ai|au|ay|ea|ee|ei|oa|oi|oo|ou|ui|oy/, "@") #vowel combos
-#     #puts "*** 2 #{processed}"
-#     processed.gsub!(/qu|ng|ch|rt|[#{consonants}h]/, "=") #consonant combos
-#     #puts "*** 3 #{processed}"
-#     processed.gsub!(/[#{vowels}@][#{consonants}=]e$/, "@|") # remove silent e
-#     #puts "*** 4 #{processed}"
-#     processed.gsub!(/[#{vowels}]/, "@") #all remaining vowels will be counted
-#     #puts "*** 5 #{processed}"
-#     return processed.count("@") + suffix_bonus
-#   end
-  
-# end
-
-
-
-
-
-
