@@ -52,7 +52,11 @@
 
 @tweets.each do |tweet|
 	Tweet.create(
-		text: tweet
+		text: tweet.text, 
+		twitter_handle_id: tweet.user.screen_name,
+		tweet_status_url: "https://twitter.com" + tweet.url.path, 
+		tweet_status_num: tweet.id,
+		last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
 	) 
 end
 
