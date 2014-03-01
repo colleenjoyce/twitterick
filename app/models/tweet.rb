@@ -20,7 +20,11 @@ class TweetValidation < ActiveModel::Validator
 
 		if tweet.text.syllable_count < 4 
 			tweet.errors[:base] << "This tweet has less than four syllables"	
-		end		
+		end	
+
+		if tweet.text.syllable_count > 10 
+			tweet.errors[:base] << "This tweet has more than ten syllables"	
+		end			
 	end
 
 end 
