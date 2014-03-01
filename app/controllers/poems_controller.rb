@@ -14,15 +14,20 @@ include TwitterApi
 			if handle != "" 
 				#strips @ sign from handle 
 				handle = handle[1..handle.length]
-				#if twitter handle is in db already
-				if (th = TwitterHandle.find_by_handle(handle))                         #check for date
-					tweets = get_all_tweets(handle)
-					push_tweets(th.id, tweets)
+				#if twitter handle is in db already 
+				if (th = TwitterHandle.find_by_handle(handle))
+					# if handle was searched in last 24 hrs don't check twitter
+					# puts "before last day search"
+					if ( th.last_searched && Time.new.day - th.last_searched.day == 1) 
+						# puts "inside last day search"
+						tweets = get_all_tweets(handle)
+						push_tweets(th.id, tweets)
+					end
 				else #twitter handle is not in db
 					begin # search, retrieve twitter for tweets by given handle  
 						tweets = get_all_tweets(handle)
 						# if handle is found on twitter, create handle in db 
-						th = TwitterHandle.create(handle: handle)
+						th = TwitterHandle.create(handle: handle, last_searched: Time.new)
 						# for each tweet found, create Tweet in db 
 						push_tweets(th.id, tweets)
 
