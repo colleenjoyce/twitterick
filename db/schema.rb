@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140228193723) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_searched"
+    
   end
 
   add_index "twitter_handles", ["handle"], name: "index_twitter_handles_on_handle", using: :btree

@@ -2,5 +2,5 @@ class TwitterHandle < ActiveRecord::Base
 	has_many :tweets 
 	belongs_to :user 
 
-	validates :handle, uniqueness: true
+	validates :handle, uniqueness: true, presence: true 
 end

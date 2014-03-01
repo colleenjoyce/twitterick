@@ -14,6 +14,10 @@ class TweetValidation < ActiveModel::Validator
 			tweet.errors[:base] << "This tweet includes a url"
 		end
 
+		if tweet.text.include?("https://")
+			tweet.errors[:base] << "This tweet includes a url"
+		end
+
 		if tweet.text.syllable_count < 4 
 			tweet.errors[:base] << "This tweet has less than four syllables"	
 		end		
