@@ -1,5 +1,7 @@
-module RhymingWords
-	def get_rhymes(word)
+require 'open-uri'
+
+class RhymingWords
+	def self.get_rhymes(word)
 		rhymes = []
 		doc = Nokogiri::HTML(open("http://www.rhymezone.com/r/rhyme.cgi?Word=#{word}&typeofrhyme=perfect"))
 		doc.css("a").each do |link|
@@ -11,19 +13,19 @@ module RhymingWords
 		rhymes
 	end
 
-	def get_num_rhymes(word)
+	def self.get_num_rhymes(word)
 		get_rhymes(word).count
 	end 
 
 	# BACK-UP CODE 
-	# def parse_json(url)
+	# def self.parse_json(url)
 	# 	JSON.parse(HTTParty.get(url).body)
 	# end
 
-	# def get_rhymes(word)
+	# def self.get_rhymes(word)
 	# 	url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
 	# 	rhymes = []
-	# 	parse_json(url).each do |rhyme|
+	# 	self.parse_json(url).each do |rhyme|
 	# 		rhymes.push(rhyme["word"])		
 	# 	end
 	# 	return rhymes 

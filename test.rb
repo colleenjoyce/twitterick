@@ -1,5 +1,7 @@
 # require 'twitter'
 # require 'numbers_and_words'
+require 'Nokogiri'
+
 
 # @client = Twitter::REST::Client.new do |config|
 #  	config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
@@ -49,15 +51,51 @@
 # 	puts e
 # end
 
-	def parse_json(url)
-		JSON.parse(HTTParty.get(url).body)
+	# def parse_json(url)
+	# 	JSON.parse(HTTParty.get(url).body)
+	# end
+
+	# def get_rhymes(word)
+	# 	url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
+	# 	return parse_json(url)
+	# end
+
+
+class RhymingWords
+	def self.get_rhymes(word)
+		rhymes = []
+		doc = Nokogiri::HTML(open("http://www.rhymezone.com/r/rhyme.cgi?Word=#{word}&typeofrhyme=perfect"))
+		doc.css("a").each do |link|
+			if (link["href"][0]=="d" && link["href"][1] == "=")
+			word = link["href"]
+			rhymes.push(word[2..word.length])
+			end
+		end
+		rhymes
 	end
 
-	def get_rhymes(word)
-		url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
-		return parse_json(url)
-	end
+	def self.get_num_rhymes(word)
+		get_rhymes(word).count
+	end 
 
+	# BACK-UP CODE 
+	# def self.parse_json(url)
+	# 	JSON.parse(HTTParty.get(url).body)
+	# end
+
+	# def self.get_rhymes(word)
+	# 	url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
+	# 	rhymes = []
+	# 	self.parse_json(url).each do |rhyme|
+	# 		rhymes.push(rhyme["word"])		
+	# 	end
+	# 	return rhymes 
+	# end
+
+
+end 
+
+puts RhymingWords.get_num_rhymes("hello").to_s 
 
 
 

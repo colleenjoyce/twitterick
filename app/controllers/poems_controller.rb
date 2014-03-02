@@ -1,11 +1,10 @@
 require 'twitter_api'
 require 'poem_module'
-require 'rhyming_module'
+require 'rhyme_module'
 
 class PoemsController < ApplicationController
 include TwitterApi
-include PoemConstructor  
-include RhymingWords 
+include PoemConstructor
 
 	def index
 		
@@ -13,7 +12,6 @@ include RhymingWords
 
 	def create
 		@poem = construct_poem(handle_check)
-		puts @poem
 		redirect_to poem_path(@poem)
 	end 
 	

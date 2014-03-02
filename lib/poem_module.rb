@@ -86,21 +86,21 @@ puts "line_num" + line_num.to_s
 			when 0 # IMPORTANT LINE 
 puts "constructing line_num 0"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
-				rhymes_a = get_rhymes(tweet.last_word) 
+				#rhymes_a = get_rhymes(tweet.last_word) 
 				num_syll_a = tweet.num_syllables
 
-				stop_while = 20 
-				while (rhymes_a.count < 10 ) 
-					tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
-					rhymes_a = get_rhymes(tweet.last_word) 
-					num_syll_a = tweet.num_syllables
+				# stop_while = 20 
+				# while (rhymes_a.count < 10 ) 
+				# 	tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
+				# 	rhymes_a = get_rhymes(tweet.last_word) 
+				# 	num_syll_a = tweet.num_syllables
 
-					if (stop_while == 0)
-						#poem construction failed
-						return false
-					end
-					stop_while -= 1
-				end
+				# 	if (stop_while == 0)
+				# 		#poem construction failed
+				# 		return false
+				# 	end
+				# 	stop_while -= 1
+				# end
 puts "line_num 0 tweet " + tweet.text
 				poem.push(tweet)
 			when 1
@@ -113,7 +113,7 @@ puts "line_num 1 tweet " + tweet.text
 			when 2 # IMPORTANT LINE - check number of rhymes returned 
 puts "constructing line_num 2"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables < ?", 7).sample
-				rhymes_b = get_rhymes(tweet.last_word) 
+				#Srhymes_b = get_rhymes(tweet.last_word) 
 				num_syll_b = tweet.num_syllables
 
 				# stop_while = 20 

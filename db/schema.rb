@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228193723) do
+ActiveRecord::Schema.define(version: 20140302195631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,12 @@ ActiveRecord::Schema.define(version: 20140228193723) do
     t.datetime "updated_at"
     t.string   "tweet_status_url"
     t.string   "tweet_status_num"
+    t.integer  "num_rhymes"
   end
 
   add_index "tweets", ["last_word"], name: "index_tweets_on_last_word", using: :btree
+  add_index "tweets", ["num_rhymes"], name: "index_tweets_on_num_rhymes", using: :btree
+  add_index "tweets", ["num_syllables"], name: "index_tweets_on_num_syllables", using: :btree
   add_index "tweets", ["tweet_status_num"], name: "index_tweets_on_tweet_status_num", unique: true, using: :btree
 
   create_table "twitter_handles", force: true do |t|
@@ -48,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140228193723) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_searched"
-    
   end
 
   add_index "twitter_handles", ["handle"], name: "index_twitter_handles_on_handle", using: :btree

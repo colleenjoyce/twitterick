@@ -33,8 +33,6 @@ gem 'twitter'
 
 gem 'numbers_and_words'
 
-gem 'ruby_rhymes'
-
 gem 'nokogiri'
 
 group :doc do
