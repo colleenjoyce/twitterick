@@ -20,7 +20,20 @@
 	padding: 5px;
 }
 
+.display.poem {
+	margin-top: 30px;
+}
+
+
 ul {
 	list-style: none;
 	margin-right: 15px;
+}
+
+li {
+	line-height: 10px;
+}
+
+a {
+	font-size: 32px;
 }

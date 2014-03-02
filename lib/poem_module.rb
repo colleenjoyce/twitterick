@@ -43,7 +43,8 @@ puts handle + " inside handle not in db"
 		# 	end
 		# end
 		# redirect_to poem_path
-	end
+	
+	end # END HANDLE CHECK 
 
 	def push_tweets(twitter_handle_id, tweets)
 		tweets.each do |tweet|

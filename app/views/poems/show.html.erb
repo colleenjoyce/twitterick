@@ -1,10 +1,12 @@
-<h1>Poem</h1>
-<ul>
-<% @poem.tweets.each do |tweet| %>
-	<li>
-	<a href="<%= tweet.tweet_status_url %>">
-	<%= tweet.text %>
-	</a>
-	</li>
-<% end %>
-</ul>
+<div class="display poem">
+	<ul>
+	<% @poem.each do |tweet| %>
+		<li>
+		<a href="<%= tweet.tweet.tweet_status_url %>">
+		<%= tweet.tweet.text %>
+		</a>
+		<h6><a href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= tweet.tweet.twitter_handle.handle %></a></h6>
+		</li>
+	<% end %>
+	</ul>	
+</div>
