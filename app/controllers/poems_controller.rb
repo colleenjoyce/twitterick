@@ -3,7 +3,7 @@ require 'poem_module'
 
 class PoemsController < ApplicationController
 include TwitterApi
-include Poem  
+include PoemConstructor  
 
 	def index
 		

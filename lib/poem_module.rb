@@ -1,4 +1,4 @@
-module Poem
+module PoemConstructor
 
 	def handle_check
 puts "in handle check"
@@ -162,7 +162,7 @@ puts "Poem: "
 poem.each do |tweet|
 	puts tweet.text 
 end
-		poem = save_poem(poem)
+		save_poem(poem)
 	end 
 
 	def save_poem(poem_arr) 	
@@ -170,6 +170,6 @@ end
 		poem_arr.each_with_index do |index, tweet|
 			PoemTweet.create(poem_id: poem.id, tweet_id: tweet.id, line_num: index)			
 		end
-		return poem
+		return poem 
 	end 
 end 
