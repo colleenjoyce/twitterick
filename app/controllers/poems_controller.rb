@@ -10,9 +10,8 @@ include Poem
 	end
 
 	def create
-		construct_poem(handle_check)
-		
-		redirect_to poem_path(1)
+		@poem = construct_poem(handle_check)
+		redirect_to poem_path(@poem.id)
 	end 
 	
 	def new

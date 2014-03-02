@@ -156,11 +156,20 @@ puts "line_num 4 tweet " + tweet.text
 			end
 
 			# iterate over array by adding by one
-			handle_index = iterate_handles(handles)
+			handle_index = iterate_handles(handle_index, handles)
 		end		
 puts "Poem: "
 poem.each do |tweet|
 	puts tweet.text 
 end
+		poem = save_poem(poem)
+	end 
+
+	def save_poem(poem_arr) 	
+		poem = Poem.create
+		poem_arr.each_with_index do |index, tweet|
+			PoemTweet.create(poem_id: poem.id, tweet_id: tweet.id, line_num: index)			
+		end
+		return poem
 	end 
 end 
