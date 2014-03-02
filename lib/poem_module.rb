@@ -167,7 +167,7 @@ end
 
 	def save_poem(poem_arr) 	
 		poem = Poem.create
-		poem_arr.each_with_index do |index, tweet|
+		poem_arr.each_with_index do |tweet, index|
 			PoemTweet.create(poem_id: poem.id, tweet_id: tweet.id, line_num: index)			
 		end
 		return poem 

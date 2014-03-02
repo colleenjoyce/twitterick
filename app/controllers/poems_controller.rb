@@ -11,7 +11,8 @@ include PoemConstructor
 
 	def create
 		@poem = construct_poem(handle_check)
-		redirect_to poem_path(@poem.id)
+		puts @poem
+		redirect_to poem_path(@poem)
 	end 
 	
 	def new
@@ -19,16 +20,7 @@ include PoemConstructor
 	end
 
 	def show 
-		# poems = Poem.find(params[:id]) 
-		# @poems = []
-		# @urls = []
-		# poems.poem_tweets.each do |pt|
-		# 	tweet = Tweet.find(pt.tweet_id)
-	
-		# 	@urls[pt.line_num - 1] = tweet.tweet_status_url
-		# 	@poems[pt.line_num - 1] = tweet.text
-		# end
-
+		@poem = Poem.find(params[:id])
 	end
 
 	private

@@ -1,9 +1,9 @@
 <h1>Poem</h1>
 <ul>
-<% @poems.each_with_index do |line, index| %>
+<% @poem.tweets.each do |tweet| %>
 	<li>
-	<a href="<%= @urls[index] %>" target="_blank"> 
-		<%= line %>
+	<a href="<%= tweet.tweet_status_url %>">
+	<%= tweet.text %>
 	</a>
 	</li>
 <% end %>
