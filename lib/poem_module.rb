@@ -82,65 +82,72 @@ puts "start construction"
 		handle_index = 0 
 		(0..4).each do |line_num|
 			# secondary loop 
-			# if handle array index is equal to the length of the array 
+			# if handle array index is equal to the length of the array
+puts "handle_index: " + handle_index.to_s
 			if (handle_index == handles.length)
 				# set handle array index to 0 (beginning of array) to restart iteration 
 				handle_index = 0
 			end
 
 			#check for poem conditions
-
+puts "line_num" + line_num.to_s
 			case line_num
-
-			when line_num == 0 # IMPORTANT LINE 
+			when 0 # IMPORTANT LINE 
+puts "constructing line_num 0"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
 				rhymes_a = get_rhymes(tweet.last_word) 
 				num_syll_a = tweet.num_syllables
 
-				stop_while = 20 
-				while (rhymes_a.count < 10 ) 
-					tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
-					rhymes_a = get_rhymes(tweet.last_word) 
-					num_syll_a = tweet.num_syllables
+				# stop_while = 20 
+				# while (rhymes_a.count < 10 ) 
+				# 	tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
+				# 	rhymes_a = get_rhymes(tweet.last_word) 
+				# 	num_syll_a = tweet.num_syllables
 
-					if (stop_while == 0)
-						#poem construction failed
-						return false
-					end
-					stop_while -= 1
-				end
+				# 	if (stop_while == 0)
+				# 		#poem construction failed
+				# 		return false
+				# 	end
+				# 	stop_while -= 1
+				# end
+puts "line_num 0 tweet " + tweet.text
 				poem.push(tweet)
-			when line_num == 1
+			when 1
+puts "constructing line_num 1"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables = ?", num_syll_a).sample
-				while (tweet.last_word)
-				end
 
 
-			when line_num == 2 # IMPORTANT LINE - check number of rhymes returned 
+puts "line_num 1 tweet " + tweet.text
+			when 2 # IMPORTANT LINE - check number of rhymes returned 
+puts "constructing line_num 2"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables < ?", 7).sample
 				rhymes_b = get_rhymes(tweet.last_word) 
 				num_syll_b = tweet.num_syllables
 
-				stop_while = 20 
-				while (rhymes_b.count < 10 ) 
-					tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables < ?", 7).sample
-					rhymes_b = get_rhymes(tweet.last_word) 
-					num_syll_b = tweet.num_syllables
+				# stop_while = 20 
+				# while (rhymes_b.count < 10 ) 
+				# 	tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables < ?", 7).sample
+				# 	rhymes_b = get_rhymes(tweet.last_word) 
+				# 	num_syll_b = tweet.num_syllables
 
-					if (stop_while == 0)
-						#poem construction failed
-						return false
-					end
-					stop_while -= 1
-				end
+				# 	if (stop_while == 0)
+				# 		#poem construction failed
+				# 		return false
+				# 	end
+				# 	stop_while -= 1
+				# end
 				poem.push(tweet)
-			when line_num == 3
+puts "line_num 2 tweet " + tweet.text
+			when 3
+puts "constructing line_num 3"
+
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables = ?", num_syll_b).sample
-			when line_num == 4							
+puts "line_num 3 tweet " + tweet.text
+			when 4		
+puts "constructing line_num 4"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables = ?", num_syll_a).sample
+puts "line_num 4 tweet " + tweet.text
 			end
-
-
 
 			# iterate over array by adding by one
 			handle_index += 1 	
