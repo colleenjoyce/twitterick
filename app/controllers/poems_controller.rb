@@ -1,9 +1,11 @@
 require 'twitter_api'
 require 'poem_module'
+require 'rhyming_module'
 
 class PoemsController < ApplicationController
 include TwitterApi
 include PoemConstructor  
+include RhymingWords 
 
 	def index
 		
