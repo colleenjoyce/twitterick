@@ -12,9 +12,9 @@ puts "in handle check"
 				if (th = TwitterHandle.find_by_handle(handle))
 puts handle + " :inside handle in db"
 					# if handle was searched in last 24 hrs don't check twitter
-puts handle + " :before last day search"
-					if ( th.last_searched && Time.new.day - th.last_searched.day == 1) 
-puts handle + " :inside last day search"
+puts handle + " :before last day search " + ((Time.new.to_i - th.last_searched.to_i)/86400).to_s
+					if ( th.last_searched && (Time.new.to_i - th.last_searched.to_i)/86400 > 1) 
+puts handle + " :inside last day search: " 
 						tweets = get_all_tweets(handle)
 						push_tweets(th.id, tweets)
 					end
@@ -70,6 +70,14 @@ puts handle + " inside handle not in db"
 		return rhymes 
 	end
 
+	def iterate_handles(handle_index, handles)
+		handle_index += 1
+		if (handle_index == handles.length)
+			# set handle array index to 0 (beginning of array) to restart iteration 
+			handle_index = 0
+		end
+	end
+
 	def construct_poem(handles)
 puts "start construction"
 		# handles is an array of valid twitter handle ids
@@ -81,13 +89,8 @@ puts "start construction"
 		# (i) initialize handle array index
 		handle_index = 0 
 		(0..4).each do |line_num|
-			# secondary loop 
-			# if handle array index is equal to the length of the array
 puts "handle_index: " + handle_index.to_s
-			if (handle_index == handles.length)
-				# set handle array index to 0 (beginning of array) to restart iteration 
-				handle_index = 0
-			end
+
 
 			#check for poem conditions
 puts "line_num" + line_num.to_s
@@ -98,18 +101,18 @@ puts "constructing line_num 0"
 				rhymes_a = get_rhymes(tweet.last_word) 
 				num_syll_a = tweet.num_syllables
 
-				# stop_while = 20 
-				# while (rhymes_a.count < 10 ) 
-				# 	tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
-				# 	rhymes_a = get_rhymes(tweet.last_word) 
-				# 	num_syll_a = tweet.num_syllables
+				stop_while = 20 
+				while (rhymes_a.count < 10 ) 
+					tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables > ?", 7).sample
+					rhymes_a = get_rhymes(tweet.last_word) 
+					num_syll_a = tweet.num_syllables
 
-				# 	if (stop_while == 0)
-				# 		#poem construction failed
-				# 		return false
-				# 	end
-				# 	stop_while -= 1
-				# end
+					if (stop_while == 0)
+						#poem construction failed
+						return false
+					end
+					stop_while -= 1
+				end
 puts "line_num 0 tweet " + tweet.text
 				poem.push(tweet)
 			when 1
@@ -118,6 +121,7 @@ puts "constructing line_num 1"
 
 
 puts "line_num 1 tweet " + tweet.text
+				poem.push(tweet)
 			when 2 # IMPORTANT LINE - check number of rhymes returned 
 puts "constructing line_num 2"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables < ?", 7).sample
@@ -142,15 +146,17 @@ puts "line_num 2 tweet " + tweet.text
 puts "constructing line_num 3"
 
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables = ?", num_syll_b).sample
+				poem.push(tweet)
 puts "line_num 3 tweet " + tweet.text
 			when 4		
 puts "constructing line_num 4"
 				tweet = Tweet.where(twitter_handle_id: handles[handle_index]).where("num_syllables = ?", num_syll_a).sample
+				poem.push(tweet)
 puts "line_num 4 tweet " + tweet.text
 			end
 
 			# iterate over array by adding by one
-			handle_index += 1 	
+			handle_index = iterate_handles(handles)
 		end		
 puts "Poem: "
 poem.each do |tweet|
