@@ -1,5 +1,4 @@
 # require 'twitter'
-require 'httparty'
 # require 'numbers_and_words'
 
 # @client = Twitter::REST::Client.new do |config|
