@@ -1,21 +1,17 @@
 class LikesController < ApplicationController
 	def create
-		@like = Like.create
-		@like.value += 1 unless @like.value == 1 
-		@like.save 
+		like = like_poem(poem)
+		@like = like.poem.user(:id)
+		@like.save
 	end
 
 	def dislike 
-		@like.value -= 1 unless @like == -1
-		@like.save 
+		@like = Like.find(params[:id])	
+		@like.destroy
 	end
 
 	def show
 		@like = Like.find(params[:id])
-	end
-
-	def destroy
-		@like = Like.find(params[:id])
-		@like.destroy
+		@like.all
 	end
 end
