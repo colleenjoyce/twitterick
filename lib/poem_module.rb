@@ -57,10 +57,11 @@ puts "start construction"
 
 			when 0 # IMPORTANT LINE 
 				begin
-					tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables > ?", num_syll_a).where("num_rhymes > ?", 20).sample
+					# tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables > ?", num_syll_a).where("num_rhymes > ?", 20).sample
+					tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5).sample
 					used_rhymes.push(tweet.last_word)
 					used_twitter_handles.push(tweet.twitter_handle.handle)
-					num_syll_a = tweet.num_syllables
+					#num_syll_a = tweet.num_syllables
 					rhymes_a = RhymingWords.get_rhymes(tweet.last_word) 				
 					poem.push(tweet)
 				rescue Exception => e
@@ -77,7 +78,8 @@ puts "start construction"
 
 			when 1
 				begin
-					tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					# tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					tweet = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
 					used_rhymes.push(tweet.last_word)
 					used_twitter_handles.push(tweet.twitter_handle.id)
 					poem.push(tweet)
@@ -94,10 +96,11 @@ puts "start construction"
 
 			when 2 # IMPORTANT LINE
 				begin
-					tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables < ?", num_syll_b).where("num_rhymes > ?", 20).sample
+					# tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables < ?", num_syll_b).where("num_rhymes > ?", 20).sample
+					tweet = Tweet.where("num_rhymes > ?", 5).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
 					used_rhymes.push(tweet.last_word)
 					used_twitter_handles.push(tweet.twitter_handle.id)
-					num_syll_b = tweet.num_syllables
+					#num_syll_b = tweet.num_syllables
 					rhymes_b = RhymingWords.get_rhymes(tweet.last_word)
 					poem.push(tweet)
 				rescue Exception => e
@@ -115,7 +118,8 @@ puts "start construction"
 
 			when 3
 				begin
-					tweet = Tweet.where(num_syllables: num_syll_b).where(last_word: rhymes_b).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					# tweet = Tweet.where(num_syllables: num_syll_b).where(last_word: rhymes_b).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					tweet = Tweet.where(last_word: rhymes_b).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
 					used_rhymes.push(tweet.last_word)
 					used_twitter_handles.push(tweet.twitter_handle.id)
 					poem.push(tweet)
@@ -132,7 +136,8 @@ puts "start construction"
 
 			when 4		
 				begin
-					tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					#tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
+					tweet = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
 					poem.push(tweet)
 				rescue Exception => e
 					puts "line_num 4 " + e.to_s
