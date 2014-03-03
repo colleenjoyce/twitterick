@@ -63,12 +63,15 @@ a.current.user.email {
 	padding: 10px;
 }
 
-.edit-form 
-.display-likes {
-	border: black;
-	display: inline-block;
+.edit-form {
+	float: left;
 	margin-left: 20px;
+}
 
+.display-likes {
+	float: right;
+	margin-left: 20px;
+	margin-right: 60px;
 }
 
 
