@@ -48,10 +48,6 @@ class PoemsController < ApplicationController
 		redirect_to poem_path(params[:poem_id])
 	end
 
-	def dislike 
-
-	end
-
 	private
 
 	def poem_params
