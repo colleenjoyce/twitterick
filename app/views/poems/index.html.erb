@@ -8,8 +8,14 @@
 	</ul>
 </div>
 
-<div class="pull right">
-	<form method="get" action="/poem">
-	<button type="submit" class="btn btn-default" >CREATE YOUR OWN!</button>
-	</form>
-</div>
+<form class="create-button" action="/poems/new" method="get">
+	<button type="submit" class="btn btn-lg btn-primary btn-block" >CREATE YOUR OWN!</button>
+</form>
+
+
+<!-- 
+	<form class="navbar-form navbar-right" role="form" action="/users/sign_up" method="post">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input type="hidden" name="_method" value="get">
+					<button type="submit" class="btn btn-default">Sign up</button>
+				</form> -->

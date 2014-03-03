@@ -30,4 +30,5 @@ include PoemConstructor
 	def poem_params
 		params.require(:poem)
 	end
+
 end

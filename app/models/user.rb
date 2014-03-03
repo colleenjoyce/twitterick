@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
          :twitter_handle_id
 
   has_many :twitter_handles
+  
+  has_many :likes
+
+  has_many :poems, :through => :likes
+
 end
