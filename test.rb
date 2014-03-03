@@ -1,102 +1,67 @@
-# require 'twitter'
-# require 'numbers_and_words'
+require 'twitter'
 require 'Nokogiri'
+require 'open-uri'
+require 'httparty'
 
-
-# @client = Twitter::REST::Client.new do |config|
-#  	config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
-#  	config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
-#  	config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
-#  	config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
-#  end
-
-#  def collect_with_max_id(collection=[], max_id=nil, &block)
-# 	response = yield max_id
-#  	collection += response
-#  	response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
-#  end
-
-#  def get_all_tweets(user)
-#  	collect_with_max_id do |max_id|
-#  	 		options = {:count => 200, :include_rts => true}
-# 		options[:max_id] = max_id unless max_id.nil?
-#  		@client.user_timeline(user, options)
-#  	end
-#  end
-
-# @tweets = get_all_tweets("")
-
-# @people = Hash.new 
-# @people["justinbieber"] = get_all_tweets("justinbieber")
-# @people["rainnwilson"] = get_all_tweets("rainnwilson")
-# @people["barackobama"] = get_all_tweets("barackobama")
-
-
-# @people.each do |person|
-# 	person.each do |tweet|
-# 	Tweet.create(
-# 		text: tweet.text, 
-# 		twitter_handle_id: tweet.user.screen_name,
-# 		tweet_status_url: "https://twitter.com" + tweet.url.path, 
-# 		tweet_status_num: tweet.id,
-# 		last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
-# 	)
-# end
-# end
-
-# @tweets = nil
-# begin
-# 	@tweets = get_all_tweets("###")
-# rescue Exception => e
-# 	puts e
-# end
-
-	# def parse_json(url)
-	# 	JSON.parse(HTTParty.get(url).body)
-	# end
-
-	# def get_rhymes(word)
-	# 	url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
-	# 	return parse_json(url)
-	# end
-
-
-class RhymingWords
-	def self.get_rhymes(word)
-		rhymes = []
-		doc = Nokogiri::HTML(open("http://www.rhymezone.com/r/rhyme.cgi?Word=#{word}&typeofrhyme=perfect"))
-		doc.css("a").each do |link|
-			if (link["href"][0]=="d" && link["href"][1] == "=")
-			word = link["href"]
-			rhymes.push(word[2..word.length])
-			end
-		end
-		rhymes
+def get_twitter_client
+	client = Twitter::REST::Client.new do |config|
+		config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+		config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+		config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+		config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
 	end
+	return client
+end
 
-	def self.get_num_rhymes(word)
-		get_rhymes(word).count
-	end 
+def collect_with_max_id(collection=[], max_id=nil, &block)
+	response = yield max_id
+	collection += response
+	response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+end
 
-	# BACK-UP CODE 
-	# def self.parse_json(url)
-	# 	JSON.parse(HTTParty.get(url).body)
-	# end
+def get_all_tweets(user, since_id=nil)
+	client = get_twitter_client
+	collect_with_max_id do |max_id|
+		options = {:count => 200, :include_rts => false, :exclude_replies => true}
+		options[:max_id] = max_id unless max_id.nil?
+		if (since_id)
+			options[:since_id] = since_id
+		end
+		client.user_timeline(user, options)
+	end
+end
 
-	# def self.get_rhymes(word)
-	# 	url = "http://rhymebrain.com/talk?function=getRhymes&word=#{word}"
-	# 	rhymes = []
-	# 	self.parse_json(url).each do |rhyme|
-	# 		rhymes.push(rhyme["word"])		
-	# 	end
-	# 	return rhymes 
-	# end
+def get_rhymes(word)
+	rhymes = []
+	doc_perfect_rhymes = Nokogiri::HTML(open("http://www.rhymezone.com/r/rhyme.cgi?Word=#{word}&typeofrhyme=perfect")).css("a")
+	doc_near_rhymes = Nokogiri::HTML(open("http://www.rhymezone.com/r/rhyme.cgi?Word=#{word}&typeofrhyme=nry")).css("a")
+	near_rhyme = ""
+	doc_near_rhymes.each do |link|
+		if(link["href"][0]=="d" && link["href"][1]== "=")
+			near_rhyme = link["href"]
+			near_rhyme = near_rhyme[2..near_rhyme.length].gsub("_", " ")
+			break
+		end
+	end
+	doc_perfect_rhymes.each do |link|
+		if (link["href"][0]=="d" && link["href"][1] == "=")
+			word = link["href"]
+			word = word[2..word.length].gsub("_", " ")
+			if(word == near_rhyme)
+				break
+			end
+			rhymes.push(word)
+		end
+	end
+	rhymes
+end
 
-
+def get_num_rhymes(word)
+	get_rhymes(word).count
 end 
 
-puts RhymingWords.get_num_rhymes("hello").to_s 
+@client = get_twitter_client
+@js = get_all_tweets("justinbieber", "439653103034314753")
+@ja = get_all_tweets("justinbieber")
 
 
-
-	

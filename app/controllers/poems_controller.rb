@@ -3,17 +3,23 @@ require 'poem_module'
 require 'rhyme_module'
 
 class PoemsController < ApplicationController
-include TwitterApi
-include PoemConstructor
+	include TwitterApi
+	include PoemConstructor
 
 	def index
 		
 	end
 
 	def create
-		poem = construct_poem(handle_check)
-		@poem = poem.poem_tweets.order(:line_num)
-		redirect_to poem_path(poem)
+		twitter_handle = handle_check(params[:handle])
+		if(twitter_handle)
+			poem = construct_poem(twitter_handle)
+			if (poem)
+				@poem = poem.poem_tweets.order(:line_num)
+				redirect_to poem_path(poem)
+			end
+		end
+		#redirect to error
 	end 
 	
 	def new

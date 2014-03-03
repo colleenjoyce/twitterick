@@ -17,13 +17,15 @@ module TwitterApi
 		response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
 	end
 
-	def get_all_tweets(user)
+	def get_all_tweets(user, since_id=nil)
 		client = get_twitter_client
 		collect_with_max_id do |max_id|
-			options = {:count => 200, :include_rts => true}
+			options = {:count => 200, :include_rts => false, :exclude_replies => true}
 			options[:max_id] = max_id unless max_id.nil?
+			if (since_id)
+				options[:since_id] = since_id
+			end
 			client.user_timeline(user, options)
 		end
 	end
-
 end
