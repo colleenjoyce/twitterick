@@ -44,116 +44,61 @@ module PoemConstructor
 	def construct_poem(twitter_handle)
 puts "start construction"
 		poem = []
-		used_rhymes = []
-		used_twitter_handles = []
+		used_rhymes_a = []
+		used_rhymes_b = []
+		used_twitter_handles_a = []
+		used_twitter_handles_b = []
 		rhymes_a = []
 		rhymes_b = []
-		num_syll_a = 8
-		num_syll_b = 7
+		tweet0 = nil
+		tweet1 = nil
+		tweet2 = nil
+		tweet3 = nil
+		tweet4 = nil
 
-		(0..4).each do |line_num|
-			#check for poem conditions
-			case line_num
-
-			when 0 # IMPORTANT LINE 
-				begin
-					# tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables > ?", num_syll_a).where("num_rhymes > ?", 20).sample
-					tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5).sample
-					used_rhymes.push(tweet.last_word)
-					used_twitter_handles.push(tweet.twitter_handle.handle)
-					#num_syll_a = tweet.num_syllables
-					rhymes_a = RhymingWords.get_rhymes(tweet.last_word) 				
-					poem.push(tweet)
-				rescue Exception => e
-					puts "line_num 0 " + e.to_s
-					return false
-				end
-
-
-
-
-
-
-
-
-			when 1
-				begin
-					# tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					tweet = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					used_rhymes.push(tweet.last_word)
-					used_twitter_handles.push(tweet.twitter_handle.id)
-					poem.push(tweet)
-				rescue Exception => e
-					puts "line_num 1 " + e.to_s
-					return false
-				end
-
-
-
-
-
-
-
-			when 2 # IMPORTANT LINE
-				begin
-					# tweet = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables < ?", num_syll_b).where("num_rhymes > ?", 20).sample
-					tweet = Tweet.where("num_rhymes > ?", 5).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					used_rhymes.push(tweet.last_word)
-					used_twitter_handles.push(tweet.twitter_handle.id)
-					#num_syll_b = tweet.num_syllables
-					rhymes_b = RhymingWords.get_rhymes(tweet.last_word)
-					poem.push(tweet)
-				rescue Exception => e
-					puts "line_num 2 " + e.to_s
-					return false
-				end
-
-
-
-
-
-
-
-
-
-			when 3
-				begin
-					# tweet = Tweet.where(num_syllables: num_syll_b).where(last_word: rhymes_b).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					tweet = Tweet.where(last_word: rhymes_b).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					used_rhymes.push(tweet.last_word)
-					used_twitter_handles.push(tweet.twitter_handle.id)
-					poem.push(tweet)
-				rescue Exception => e
-					puts "line_num 3 " + e.to_s
-					return false
-				end
-
-
-
-
-
-
-
-			when 4		
-				begin
-					#tweet = Tweet.where(num_syllables: num_syll_a).where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					tweet = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes).where.not(twitter_handle_id: used_twitter_handles).sample
-					poem.push(tweet)
-				rescue Exception => e
-					puts "line_num 4 " + e.to_s
-					return false
-				end
+		#Lines 0, 1, 4
+		while (tweet0 == nil || tweet1 == nil || tweet4 == nil)
+			used_rhymes_a = []
+			used_twitter_handles_a = []
+			begin
+				tweet0 = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5).sample
+				used_rhymes_a.push(tweet0.last_word)
+				used_twitter_handles_a.push(tweet0.twitter_handle.handle)
+				rhymes_a = RhymingWords.get_rhymes(tweet0.last_word) 
+				tweet1 = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a).sample
+				used_rhymes_a.push(tweet1.last_word)
+				used_twitter_handles_a.push(tweet1.twitter_handle.id)
+				tweet4 = Tweet.where(last_word: rhymes_a).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a).sample
+				used_rhymes_a.push(tweet4.last_word)
+				used_twitter_handles_a.push(tweet4.twitter_handle.id)
+			rescue Exception => e
+				puts e.to_s
 			end
+		end
 
+		#Lines 2, 3
+		while (tweet2 == nil || tweet3 == nil)
+			used_rhymes_b = []
+			used_twitter_handles_b = []
+			begin
+				tweet2 = Tweet.where("num_rhymes > ?", 5).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a).sample
+				used_rhymes_b.push(tweet2.last_word)
+				used_twitter_handles_b.push(tweet2.twitter_handle.handle)
+				rhymes_b = RhymingWords.get_rhymes(tweet2.last_word)
+				tweet3 = Tweet.where(last_word: rhymes_b).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a)
+								.where.not(last_word: used_rhymes_b).where.not(twitter_handle_id: used_twitter_handles_b).sample
+				used_rhymes_b.push(tweet3.last_word)
+				used_twitter_handles_b.push(tweet3.twitter_handle.handle)
+			rescue Exception => e
+				puts e.to_s
+			end
+		end
 
-
-
-
-
-
-
-
-		end		
+		poem.push(tweet0)
+		poem.push(tweet1)
+		poem.push(tweet2)
+		poem.push(tweet3)
+		poem.push(tweet4)
 		save_poem(poem)
 	end 
 
