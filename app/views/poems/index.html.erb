@@ -1,21 +1,34 @@
-<div class="pull left">
+
+<div class="display poem">
 	<ul>
-		<li>Line 1</li>
-		<li>Line 2</li>
-		<li>Line 3</li>
-		<li>Line 4</li>						
-		<li>Line 5</li>	
+	<% @tweets.each do |tweet| %>
+		<li>
+		<a href="<%= tweet.tweet.tweet_status_url %>">
+		<%= tweet.tweet.text %>
+		</a>
+		<h6><a href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= tweet.tweet.twitter_handle.handle %></a></h6>
+		</li>
+	<% end %>
 	</ul>
+<% if user_signed_in? %>	
+	<% if @liked %>
+		<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
+			<input type="hidden" name="like" value="false">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<button type="submit" class="btn btn-default">Dislike</button>
+		</form>
+	<% else %>
+
+		<form class="like-button" action=<%=poem_like_path(@poem.id)%> method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="like" value="true">
+			<button type="submit" class="btn btn-default">Like</button>	
+		</form>
+	<% end %>
+<% end %>
 </div>
 
-<form class="create-button" action="/poems/new" method="get">
-	<button type="submit" class="btn btn-lg btn-primary btn-block" >CREATE POEM!</button>
-</form>
 
 
-<!-- 
-	<form class="navbar-form navbar-right" role="form" action="/users/sign_up" method="post">
-					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-					<input type="hidden" name="_method" value="get">
-					<button type="submit" class="btn btn-default">Sign up</button>
-				</form> -->
+<a href="/poems/new" role="button" class="btn btn-lg btn-primary btn-block">CREATE POEM!</a>
+

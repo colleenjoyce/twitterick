@@ -7,7 +7,11 @@ class PoemsController < ApplicationController
 	include PoemConstructor
 
 	def index
-		
+		@poem = Poem.all.sample
+		@tweets = @poem.poem_tweets.order(:line_num)
+		if (current_user)
+			@liked = Like.where(poem: @poem, user: current_user).first
+		end
 	end
 
 	def create
@@ -29,7 +33,9 @@ class PoemsController < ApplicationController
 	def show 
 		@poem = Poem.find(params[:id])
 		@tweets = @poem.poem_tweets.order(:line_num)
-		@liked = Like.where(poem: @poem, user: current_user).count > 0
+		if (current_user)
+			@liked = Like.where(poem: @poem, user: current_user).first
+		end
 	end
 
 	def like 
