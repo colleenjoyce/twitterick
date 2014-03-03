@@ -33,11 +33,17 @@ class PoemsController < ApplicationController
 	end
 
 	def like 
-		Poem.find(params[:poem_id]).users << current_user
+		if params[:like] == "true"
+			Poem.find(params[:poem_id]).users << current_user
+		else
+			like = Like.where(user_id: current_user.id, poem_id: params[:poem_id]).first
+			like.destroy 
+		end
 		redirect_to poem_path(params[:poem_id])
 	end
 
 	def dislike 
+
 	end
 
 	private

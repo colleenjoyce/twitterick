@@ -1,16 +1,7 @@
 <h1>Create a poem</h1>
 
 <form action="/poems" method="POST">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-<select name="handles[]" multiple>
-  <option value="@justinbieber">Justin Bieber</option>
-  <option value="@rainnwilson">Rainn Wilson</option>
-  <option value="@barackobama">Barack Obama</option>
-    <option value="@ccaarroolliinee">Caroline</option>
-    <option value="@colleenejoyce">Colleen Joyce</option>
-    <option value="@isaac_5050">Isaac</option>
-
-</select>
-<input type="text" name="handles[]" placeholder="Enter twitter handle">
-<input type="submit">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="text" name="handle" placeholder="Enter twitter handle">
+	<input type="submit">
 </form>
