@@ -42,7 +42,6 @@ module PoemConstructor
 	end
 
 	def construct_poem(twitter_handle)
-puts "start construction"
 		poem = []
 		used_rhymes_a = []
 		used_rhymes_b = []
