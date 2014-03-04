@@ -82,15 +82,14 @@ module PoemConstructor
 
 		#Lines 2, 3
 		while (tweet2 == nil || tweet3 == nil)
-			used_rhymes_b = []
-			used_twitter_handles_b = []
+			used_rhymes_b = used_rhymes_a
+			used_twitter_handles_b = used_twitter_handles_a
 			begin
-				tweet2 = Tweet.where("num_rhymes > ?", 5).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a).sample
+				tweet2 = Tweet.where("num_rhymes > ?", 5).where.not(last_word: used_rhymes_b).where.not(twitter_handle_id: used_twitter_handles_b).sample
 				used_rhymes_b.push(tweet2.last_word)
 				used_twitter_handles_b.push(tweet2.twitter_handle.handle)
 				rhymes_b = RhymingWords.get_rhymes(tweet2.last_word)
-				tweet3 = Tweet.where(last_word: rhymes_b).where.not(last_word: used_rhymes_a).where.not(twitter_handle_id: used_twitter_handles_a)
-								.where.not(last_word: used_rhymes_b).where.not(twitter_handle_id: used_twitter_handles_b).sample
+				tweet3 = Tweet.where(last_word: rhymes_b).where.not(last_word: used_rhymes_b).where.not(twitter_handle_id: used_twitter_handles_b).sample
 				used_rhymes_b.push(tweet3.last_word)
 				used_twitter_handles_b.push(tweet3.twitter_handle.handle)
 			rescue Exception => e
