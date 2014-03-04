@@ -25,7 +25,7 @@ class PoemsController < ApplicationController
 	
 	def new
 		@twitter_handles = []
-		twitter_handles = TwitterHandle.all.order(:handle)
+		twitter_handles = TwitterHandle.all.order(:name)
 		twitter_handles.each do |th|
 			if th.tweets.count > 10
 				@twitter_handles.push(th)
