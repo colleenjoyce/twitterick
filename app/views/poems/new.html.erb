@@ -1,12 +1,18 @@
-<h1>Create a poem</h1>
 
-<form action="/poems" method="POST">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<select name="id">
-	<% @twitter_handles.each do |handle| %>
-	<option value="<%= handle.id %>"><%= handle.name %></option>
-	<% end %>
-	</select>
-	<input class="btn btn-default" type="submit">
-</form>
+<div class="jumbotron">
+<h1>Create a poem</h1>
+	<div class="words">
+		<p>Choose from our list of Twitter personalities</p>
+	</div>
+	<form action="/poems" method="POST">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<select class="panel panel-default" name="id">
+			<% @twitter_handles.each do |handle| %>
+			<option value="<%= handle.id %>"><%= handle.name %></option>
+			<% end %>
+		</select>
+		<input class="btn btn-default" type="submit" > 
+	<div class="link-below">
+		<a class="link-below" href="/twitter_handles/new">...or submit your own</a>
+	</div>
 
