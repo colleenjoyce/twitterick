@@ -121,7 +121,7 @@ namespace :tweets do
 	end
 
 	task :c5 => environment do
-		handle_check("ZooeyDeschanel"
+		handle_check("ZooeyDeschanel")
 		handle_check("aplusk")
 		handle_check("eddieizzard") 
 	end
