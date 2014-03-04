@@ -18,8 +18,9 @@ class PoemsController < ApplicationController
 		if (poem = construct_poem(TwitterHandle.find(params[:id])))
 			@poem = poem.poem_tweets.order(:line_num)
 			redirect_to poem_path(poem)
+		else
+			redirect_to new_poem_path, alert: "Sorry! Unable to create a poem with the Twitter handle submitted."
 		end
-		#redirect to error
 	end 
 	
 	def new
