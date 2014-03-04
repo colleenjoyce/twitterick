@@ -84,48 +84,48 @@ namespace :tweets do
 		handle_check("SnoopDogg")
 	end
 
-	task :b8 => environment do
+	task :b8 => :environment do
 		handle_check("AvrilLavigne")
 		handle_check("NICKIMINAJ")
 		handle_check("johnlegend")
 	end
 
-	task :b9 => environment do
+	task :b9 => :environment do
 		handle_check("britneyspears")
 		handle_check("BrunoMars")
 		handle_check("SethMacFarlane")
 	end
 
-	task :c1 => environment do
+	task :c1 => :environment do
 		handle_check("jtimberlake")
 		handle_check("taylorswift13")
 		handle_check("danieltosh")
 		
 	end
 
-	task :c2 => environment do
+	task :c2 => :environment do
 		handle_check("ladygaga") 
 		handle_check("shakira")
 		handle_check("charliesheen")
 	end
 
-	task :c3 => environment do
+	task :c3 => :environment do
 		handle_check("JimGaffigan") 
 		handle_check("hodgman")
 		handle_check("SteveMartinToGo")
 	end
-	task :c4 => environment do
+	task :c4 => :environment do
 		handle_check("EugeneMirman")
 		handle_check("stephenfry")
 		handle_check("kathygriffin")
 	end
 
-	task :c5 => environment do
+	task :c5 => :environment do
 		handle_check("ZooeyDeschanel")
 		handle_check("aplusk")
 		handle_check("eddieizzard") 
 	end
-	task :c6 => environment do
+	task :c6 => :environment do
 		handle_check("ParisHilton")
 		handle_check("RealTracyMorgan")
 		handle_check("nerdist")
