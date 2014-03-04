@@ -32,29 +32,20 @@ namespace :tweets do
 	end
 
 	def update_tweets
-		twitter_handles_with_no_tweets = []
-		twitter_handles_with_few_tweets = []
-		th = TwitterHandle.all
-		th.each do |handle|
-			if handle.tweets.count == 0
-				twitter_handles_with_no_tweets.push(handle)
-			elsif handle.tweets.count > 0 && handle.tweets.count < 100
-				twitter_handles_with_few_tweets.push(handle)
-			end
+		twitter_handles_to_update = TwitterHandle.where(last_searched: nil).sample(3)
+		tweets = nil
+		if twitter_handles_to_update.empty?
+			twitter_handles_to_update = TwitterHandle.order("last_searched asc").take(3)
 		end
 
-		if (twitter_handle = TwitterHandle.find_by_handle(handle))
-			if ( twitter_handle.last_searched && (Time.new.to_i - twitter_handle.last_searched.to_i)/86400 > 1) 
-				tweets = get_all_tweets(handle, twitter_handle.tweets.last.tweet_status_num)
+		if !twitter_handles_to_update.empty?
+			twitter_handles_to_update.each do |twitter_handle|
+				if twitter_handle.last_searched
+					tweets = get_all_tweets(handle, twitter_handle.tweets.last.tweet_status_num)	
+				else
+					tweets = get_all_tweets(handle)
+				end
 				push_tweets(twitter_handle.id, tweets)
-			end
-		else 
-			begin  
-				tweets = get_all_tweets(handle)
-				twitter_handle = TwitterHandle.create(handle: handle, last_searched: Time.new)
-				push_tweets(twitter_handle.id, tweets)
-			rescue Exception => e
-				puts e
 			end
 		end
 	end
