@@ -16,12 +16,13 @@ small {
 	color: #969696;
 }
 
-
 a.title-link
  {
 	color: #F5F5F5;
 	font-family: Georgia,"Times New Roman",Times,serif;
 	font-size: 32px;
+	font-family: 'Lobster', cursive;
+	padding-left: 5px;
 }
 
 a.title-link:hover {
@@ -47,8 +48,8 @@ ul {
 }
 
 a.poem-line {
-/*	color: #969696;*/
-	color: #68BEAA;
+	color: #969696;
+/*	color: #68BEAA;*/
 	font-size: 28px;
 
 }
@@ -67,6 +68,23 @@ a.twitter-handle-link {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.panel-default {
+	height: 32px;
+	font-size: 18px;
+}
+
+.link-below {
+	color: #68BEAA;
+	font-size: 18px;
+}
+
+.create-poem-link{
+	color: #68BEAA;
+	font-size: 28px;
+	font-weight: 700;	
+}
+
 
 /*				.nav .btn-link, 
 				.nav a, 
