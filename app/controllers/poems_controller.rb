@@ -15,19 +15,21 @@ class PoemsController < ApplicationController
 	end
 
 	def create
-		twitter_handle = handle_check(params[:handle])
-		if(twitter_handle)
-			poem = construct_poem(twitter_handle)
-			if (poem)
-				@poem = poem.poem_tweets.order(:line_num)
-				redirect_to poem_path(poem)
-			end
+		if (poem = construct_poem(TwitterHandle.find(params[:id])))
+			@poem = poem.poem_tweets.order(:line_num)
+			redirect_to poem_path(poem)
 		end
+		#redirect to error
 	end 
-
 	
 	def new
-
+		@twitter_handles = []
+		twitter_handles = TwitterHandle.all.order(:handle)
+		twitter_handles.each do |th|
+			if th.tweets.count > 10
+				@twitter_handles.push(th)
+			end
+		end
 	end
 
 	def show 
@@ -52,6 +54,10 @@ class PoemsController < ApplicationController
 
 	def poem_params
 		params.require(:poem)
+	end
+
+	def twitter_handle_params
+		params.require(:twitter_handle).permit(:handle)
 	end
 
 end

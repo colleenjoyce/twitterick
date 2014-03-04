@@ -1,46 +1,4 @@
 module PoemConstructor
-
-	def handle_check(handle)
-		twitter_handle = nil
-		#if handle is not blank 
-		if handle != ""
-			#strips @ sign from handle 
-			if (handle[0] == "@")
-				handle = handle[1..handle.length]
-			end
-			#if twitter handle is in db already 
-			if (twitter_handle = TwitterHandle.find_by_handle(handle))
-				# if handle was searched in last 24 hrs don't check twitter
-				if ( twitter_handle.last_searched && (Time.new.to_i - twitter_handle.last_searched.to_i)/86400 > 1) 
-					tweets = get_all_tweets(handle)
-					push_tweets(twitter_handle.id, tweets)
-				end
-			else #twitter handle is not in db
-				begin # search and retrieve tweets from twitter for given handle  
-					tweets = get_all_tweets(handle)
-					# if handle is found on twitter, create handle in db (handle is legitimate twitter handle)
-					twitter_handle = TwitterHandle.create(handle: handle, last_searched: Time.new)
-					# for each tweet found, create Tweet in db 
-					push_tweets(twitter_handle.id, tweets)
-				rescue
-				end
-			end
-		end
-		return twitter_handle
-	end
-
-	def push_tweets(twitter_handle_id, tweets)
-		tweets.each do |tweet|
-		Tweet.create(
-			text: tweet.text, 
-			twitter_handle_id: twitter_handle_id,
-			tweet_status_url: "https://twitter.com" + tweet.url.path, 
-			tweet_status_num: tweet.id,
-			last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
-		)
-		end
-	end
-
 	def construct_poem(twitter_handle)
 		poem = []
 		used_rhymes_a = []
