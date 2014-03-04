@@ -59,10 +59,14 @@ a.twitter-handle-link {
 }
 
 .btn-default {
-	margin-left: 36px;
 	margin-top: 14px;
 }
 
+.form-control {
+	width: 200px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
 /*				.nav .btn-link, 
 				.nav a, 
