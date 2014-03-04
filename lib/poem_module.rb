@@ -60,7 +60,12 @@ module PoemConstructor
 			used_rhymes_a = []
 			used_twitter_handles_a = []
 			begin
-				tweet0 = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5).sample
+				tweet0 = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5)
+				if (tweet0.count < 10)
+					return false
+				else
+					tweet0 = tweet0.sample
+				end
 				used_rhymes_a.push(tweet0.last_word)
 				used_twitter_handles_a.push(tweet0.twitter_handle.handle)
 				rhymes_a = RhymingWords.get_rhymes(tweet0.last_word) 

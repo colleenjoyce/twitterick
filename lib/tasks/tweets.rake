@@ -1,5 +1,6 @@
 require 'twitter'
 require 'open-uri'
+require 'Nokogiri'
 
 namespace :tweets do 
 	task :a1 => :environment do
@@ -182,7 +183,8 @@ namespace :tweets do
 					twitter_handle = TwitterHandle.create(handle: handle, last_searched: Time.new)
 					# for each tweet found, create Tweet in db 
 					push_tweets(twitter_handle.id, tweets)
-				rescue
+				rescue Exception => e
+					puts e
 				end
 			end
 		end
