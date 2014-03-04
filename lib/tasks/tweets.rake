@@ -1,6 +1,6 @@
 require 'twitter'
 require 'open-uri'
-require 'Nokogiri'
+require 'nokogiri'
 
 namespace :tweets do 
 	task :a1 => :environment do
