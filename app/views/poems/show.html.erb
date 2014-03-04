@@ -1,11 +1,12 @@
 <div class="jumbotron">
 	
+
 	<% @tweets.each do |tweet| %>
 		<p>
-		<a class="line-tweet" href="<%= tweet.tweet.tweet_status_url %>">
+		<a class="poem-line" href="<%= tweet.tweet.tweet_status_url %>">
 		<%= tweet.tweet.text %>
 		</a>
-		<p><a class="handle" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a><p>
+		<h6><a class="twitter-handle-link" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a></h6>
 		</p>
 	<% end %>
 	

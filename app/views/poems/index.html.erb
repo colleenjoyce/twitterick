@@ -1,4 +1,4 @@
-	<div class="display poem">
+<div class="display poem">
 	<ul>
 	<% @tweets.each do |tweet| %>
 		<li>
@@ -10,6 +10,7 @@
 	<% end %>
 	</ul>
 
+<br>
 <% if user_signed_in? %>	
 	<% if @liked %>
 		<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
@@ -26,8 +27,12 @@
 		</form>
 	<% end %>
 <% end %>
-<a href="/poems/new" class="create-poem-link">Create a Poem!</a>
+<br>
+<br>
+<a href="/poems/new" class="create-poem-link">Create a poem of your own!</a>
+
 </div>
+
 
 
 
