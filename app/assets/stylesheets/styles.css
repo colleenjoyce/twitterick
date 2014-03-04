@@ -20,7 +20,7 @@ body {
 
 .title-link {
 	color: GhostWhite;
-	text-shadow: 1px 1px #000000;
+/*	text-shadow: 1px 1px #000000;*/
 	padding-left: 10px;
 }
 
@@ -170,7 +170,6 @@ a.create-poem-button {
 
 .line-tweet {
 	color: #323232;
-	font-size: 
 }
 
 footer {
