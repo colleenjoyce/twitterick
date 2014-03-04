@@ -8,15 +8,11 @@
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<select class="panel panel-default" name="id">
 			<% @twitter_handles.each do |handle| %>
-			<option value="<%= handle.id %>"><%= handle.handle %></option>
+			<option value="<%= handle.id %>"><%= handle.name %></option>
 			<% end %>
 		</select>
-		<input class="btn btn-default" type="submit" > !!
+		<input class="btn btn-default" type="submit" > 
 	<div class="link-below">
 		<a class="link-below" href="/twitter_handles/new">...or submit your own</a>
 	</div>
-</form>
-</div>
-
-
 
