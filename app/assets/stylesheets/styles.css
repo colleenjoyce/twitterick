@@ -1,86 +1,94 @@
 body {
-	font: 16px;
-	background-color: GhostWhite;
-	margin: 0 auto;
+	background-color: #F5F5F5;
 }
 
 .navbar-default {
-	background-color: #68BEAA;
-	border: none;
-	border-radius: 0;
-	padding-top: 10px; 
+	background-color: #68BEAA; 
 }
 
-.container {
-	width: 960;
-	height: 542;
-	margin: auto;
-	display: block;
+.navbar-fixed-bottom {
+	background-color: #d3d3d3;
+	text-align: center;
+	padding-top: 10px;
 }
 
-.title-link {
-	color: GhostWhite;
-/*	text-shadow: 1px 1px #000000;*/
-	padding-left: 10px;
+small {
+	color: #969696;
 }
 
-.title-link:hover {
-	background-color: #68BEAA;
-	color: GhostWhite;
+
+a.title-link
+ {
+	color: #F5F5F5;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 32px;
 }
 
-.navbar-collapse.collapse {
-	border: none;
-}
-
-.sign-out, 
-.sign-up,
-.sign-in {
-/*	color: #c2e5dd;*/
-	color: rgba(255, 255, 255, .65);
-	background-color: #68BEAA;
-	border: none;
-	padding: 0;
-}
-
-.sign-out:hover, 
-.sign-up:hover,
-.sign-in:hover {
-	background-color: #68BEAA;
-	color: #e0f2ee;
-}
-
-a.poem-line {
-	font-size: 1.5em;
-	line-height: 150%;
-	letter-spacing: 1px;
-	color: #969696; 
-	padding: 1px 2px;
-	text-transform: lowercase;
-}
-
-a.twitter-handle-link {
-	font-size: 16px;
-	font-weight: normal;
-	margin-left: 25px;
-	color: #323232;
-	letter-spacing: 1px;
-}
-
-a:hover{
-	background-color: GhostWhite;
+a.title-link:hover {
+	color: #FFFFFF;
 	text-decoration: none;
 }
 
-.bg-primary {
-	background-color: #f9fc7e;
-	color: #323232;
-	margin-left: 40px;
+.sign-up,
+.sign-in {
+	color: rgba(255, 255, 255, .65);
+	background-color: #68BEAA;
+	border: none;
+	letter-spacing: 0.5px;
+}
+
+.sign-up:hover, 
+.sign-in:hover {
+	color: #FFFFFF;
+}
+
+ul {
+	list-style: none;
+}
+
+a.poem-line {
+/*	color: #969696;*/
+	color: #68BEAA;
+	font-size: 28px;
+
+}
+
+a.twitter-handle-link {
+	color: #707070;
+	margin-left: 15px;
+}
+
+.btn-default {
+	margin-left: 36px;
+	margin-top: 14px;
 }
 
 
-.pull.left {
-/*	border: solid black;*/
+/*				.nav .btn-link, 
+				.nav a, 
+				form.navbar-form.navbar-right
+				{*/
+				/*	color: #c2e5dd;*/
+/*					color: rgba(255, 255, 255, .65);
+					background-color: #68BEAA;
+					border: none;
+				}
+
+				.nav .btn-link:hover, 
+				.nav a:hover,
+				form.navbar-form.navbar-right:hover {
+					background-color: #68BEAA;
+					color: #e0f2ee;
+				}*/
+
+/*.navbar-default .navbar-nav>li>a {
+	background-color: #68BEAA;
+	color: rgba(255, 255, 255, .65);
+}*/
+/*form.navbar-form.navbar-right*/
+
+/*.pull.left {
+	border: solid black;
 	display: inline-block;
 	padding: 5px;
 }
@@ -98,16 +106,11 @@ ul {
 
 li {
 	line-height: 10px;
-}
+}*/
 
-a {
-	font-size: 32px;
-}
 
-a.current.user.email {
-	font-size: 20px;
-}
 
+/*
 
 .remember_me {
 	margin-top: 10px;
@@ -132,8 +135,8 @@ a.create-poem-button {
 	width: 175px;
 	margin-top: 20px;
 	margin-bottom: 10px;
-}
-
+}*/
+/*
 .edit-form {
 	float: left;
 	margin-left: 20px;
@@ -153,9 +156,9 @@ a.create-poem-button {
 .custom-h3 {
 	color: #969696;
 	background-color: #f9fc7e;
-}
+}*/
 
-.like-btn {
+/*.like-btn {
 	background-color: #eeeeee;
 	color: #323232;
 	margin-left: 40px;
@@ -172,13 +175,8 @@ a.create-poem-button {
 	color: #323232;
 }
 
-footer {
-	background-color: #68BEAA;
+.navbar-fixed-bottom {
+	background-color: #d3d3d3;
 	text-align: center;
-	color: rgba(255, 255, 255, .65);
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 1.7em;
-	position: absolute;
-}
+	color: #969696;
+}*/
