@@ -37,4 +37,39 @@ module TwitterApi
 		end
 		twitter_handle
 	end
+
+	def update_tweets
+		twitter_handles_to_update = TwitterHandle.where(last_searched: nil).sample(3)
+		tweets = nil
+		if twitter_handles_to_update.empty?
+			twitter_handles_to_update = TwitterHandle.order("last_searched asc").take(3)
+		end
+
+		if !twitter_handles_to_update.empty?
+			twitter_handles_to_update.each do |twitter_handle|
+				puts "updating " + twitter_handle.handle
+				if twitter_handle.last_searched
+					tweets = get_all_tweets(twitter_handle.handle, twitter_handle.tweets.last.tweet_status_num)	
+				else
+					tweets = get_all_tweets(twitter_handle.handle)
+				end
+				twitter_handle.last_searched = Time.new
+				twitter_handle.save
+				push_tweets(twitter_handle.id, tweets)
+			end
+		end
+	end
+
+	def push_tweets(twitter_handle_id, tweets)
+		tweets.each do |tweet|
+		Tweet.create(
+			text: tweet.text, 
+			twitter_handle_id: twitter_handle_id,
+			tweet_status_url: "https://twitter.com" + tweet.url.path, 
+			tweet_status_num: tweet.id,
+			last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
+		)
+		end
+	end
+
 end
