@@ -2,6 +2,9 @@ require 'twitter'
 
 namespace :tweets do 
 	
+	task :update_tweets => :environment do
+  		update_tweets
+  	end
 
 	def get_twitter_client
 		client = Twitter::REST::Client.new do |config|
