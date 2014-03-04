@@ -6,7 +6,6 @@
 	<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
 	<%= csrf_meta_tags %>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
 </head>
 <body>
 	<div class="navbar navbar-default" role="navigation">
@@ -26,11 +25,11 @@
 				<form class="navbar-form navbar-right" role="form" action="/users/sign_out" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input type="hidden" name="_method" value="delete">
-					<button type="submit" class="sign-out">Sign out</button>
+					<button type="submit" class="btn btn-link">Sign out</button>
 				</form>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="current user email" href="/users/edit"><%= current_user.email %></a></li>
+					<li><a href="/users/edit"><%= current_user.email %></a></li>
 				</ul>
 
 				<% else %>
@@ -70,6 +69,10 @@
 
 		<%= yield %>
 	</div>
-	<footer><small>Made by Isaac Torres &amp; Colleen Joyce | March 2014</small></footer>
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    	<small>Made by Isaac Torres &amp; Colleen Joyce | March 2014</small>
+  </div>
+</nav>
 </body>
 </html>
