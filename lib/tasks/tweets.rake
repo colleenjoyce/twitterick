@@ -46,7 +46,7 @@ namespace :tweets do
 				if twitter_handle.last_searched
 					tweets = get_all_tweets(twitter_handle.handle, twitter_handle.tweets.last.tweet_status_num)	
 				else
-					tweets = get_all_tweets(twitter_handle.handlehandle)
+					tweets = get_all_tweets(twitter_handle.handle)
 				end
 				push_tweets(twitter_handle.id, tweets)
 			end
