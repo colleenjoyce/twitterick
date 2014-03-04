@@ -160,6 +160,7 @@ namespace :tweets do
 	end
 
 	def handle_check(handle)
+		puts "Checking " + handle
 		twitter_handle = nil
 		#if handle is not blank 
 		if handle != ""
