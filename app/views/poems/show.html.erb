@@ -1,20 +1,20 @@
-<div class="display poem">
-	<ul>
+<div class="jumbotron">
+	
 	<% @tweets.each do |tweet| %>
-		<li>
-		<a href="<%= tweet.tweet.tweet_status_url %>">
+		<p>
+		<a class="line-tweet" href="<%= tweet.tweet.tweet_status_url %>">
 		<%= tweet.tweet.text %>
 		</a>
-		<p><a href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= tweet.tweet.twitter_handle.handle %></a><p>
-		</li>
+		<p><a class="handle" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a><p>
+		</p>
 	<% end %>
-	</ul>
+	
 <% if user_signed_in? %>	
 	<% if @liked %>
 		<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
 			<input type="hidden" name="like" value="false">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<button type="submit" class="like-btn"><i class="fa fa-heart-o"></i></button>
+			<button type="submit" class="like-btn"><i class="fa fa-heart-o fa-lg"></i></button>
 		</form>
 	<% else %>
 
@@ -22,7 +22,7 @@
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="like" value="true">
 			<!-- <button type="submit" class="like-btn">Like</button> -->
-			<button type="submit" class="like-btn"><i class="fa fa-heart"></i></button>	
+			<button type="submit" class="like-btn"><i class="fa fa-heart fa-lg"></i></button>	
 		</form>
 	<% end %>
 <% end %>

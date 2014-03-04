@@ -1,17 +1,14 @@
-/*.user-sign { 
-	width:350px;
-	margin:0 auto; 
-}
-
-.user-sign input, 
-.user-sign select, 
-.user-sign button { 
-	margin-bottom:5px; 
-}*/
-
 body {
 	font: 16px;
 	background-color: GhostWhite;
+	margin: 0 auto;
+}
+
+.navbar-default {
+	background-color: #68BEAA;
+	border: none;
+	border-radius: 0;
+	padding-top: 10px; 
 }
 
 .container {
@@ -21,52 +18,27 @@ body {
 	display: block;
 }
 
-a.title-link {
-	margin-top: 100px;
+.title-link {
+	color: GhostWhite;
+	text-shadow: 1px 1px #000000;
+	padding-left: 10px;
 }
 
-.navbar {
-	border-top-style: none;
-	border-right-style: none;
-	border-left-style: none;
-	border-bottom-style: 1px solid;
-	padding-top: 10px; 
-}
-
-.navbar-default {
-	background-color: GhostWhite;
+.title-link:hover {
+	background-color: #68BEAA;
+	color: GhostWhite;
 }
 
 .navbar-collapse.collapse {
 	border: none;
 }
 
-/* GRADIENT 
-.columns-bg {
-  background-image:
-    linear-gradient(
-      to right, 
-      #fffdc2,
-      #fffdc2 15%,
-      #d7f0a2 15%,
-      #d7f0a2 85%,
-      #fffdc2 85%
-    );
-}*/
-
-.navbar-brand {
-/*	letter-spacing: 0.3em;*/
-
-}
-
-#site-title.navbar-brand {
-/*	background-color: #f9fc7e;*/
-}
-
 .sign-out, 
 .sign-up,
 .sign-in {
-	background-color: #f9fc7e;
+/*	color: #c2e5dd;*/
+	color: rgba(255, 255, 255, .65);
+	background-color: #68BEAA;
 	border: none;
 	padding: 0;
 }
@@ -74,9 +46,9 @@ a.title-link {
 .sign-out:hover, 
 .sign-up:hover,
 .sign-in:hover {
-	background-color: GhostWhite;
+	background-color: #68BEAA;
+	color: #e0f2ee;
 }
-
 
 a.poem-line {
 	font-size: 1.5em;
@@ -184,11 +156,30 @@ a.create-poem-button {
 }
 
 .like-btn {
-	background-color: #f9fc7e;
+	background-color: #eeeeee;
 	color: #323232;
 	margin-left: 40px;
 	border: none;
 	padding: 1px;
 }
 
+.handle {
+	font-size: 14px;
+	margin-left: 16px;
+}
 
+.line-tweet {
+	color: #323232;
+	font-size: 
+}
+
+footer {
+	background-color: #68BEAA;
+	text-align: center;
+	color: rgba(255, 255, 255, .65);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 1.7em;
+	position: absolute;
+}
