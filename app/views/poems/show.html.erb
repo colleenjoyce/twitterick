@@ -14,14 +14,15 @@
 		<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
 			<input type="hidden" name="like" value="false">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<button type="submit" class="btn btn-default">Dislike</button>
+			<button type="submit" class="like-btn"><i class="fa fa-heart-o"></i></button>
 		</form>
 	<% else %>
 
 		<form class="like-button" action=<%=poem_like_path(@poem.id)%> method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="like" value="true">
-			<button type="submit" class="btn btn-default">Like</button>	
+			<!-- <button type="submit" class="like-btn">Like</button> -->
+			<button type="submit" class="like-btn"><i class="fa fa-heart"></i></button>	
 		</form>
 	<% end %>
 <% end %>

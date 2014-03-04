@@ -23,8 +23,8 @@ class PoemsController < ApplicationController
 				redirect_to poem_path(poem)
 			end
 		end
-		#redirect to error
 	end 
+
 	
 	def new
 

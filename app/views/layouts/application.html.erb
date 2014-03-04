@@ -5,12 +5,13 @@
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => false %>
 	<%= csrf_meta_tags %>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 </head>
 <body>
-	
+	<div class="container">
 	<div class="navbar navbar-default" role="navigation">
-		<div class="container">
+		
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
@@ -18,7 +19,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Twitterick</a>
+				<a class="title-link" href="/">Twitterick</a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<% if user_signed_in? %>
@@ -26,7 +27,7 @@
 				<form class="navbar-form navbar-right" role="form" action="/users/sign_out" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input type="hidden" name="_method" value="delete">
-					<button type="submit" class="btn btn-default">Sign out</button>
+					<button type="submit" class="sign-out">Sign out</button>
 				</form>
 				
 				<ul class="nav navbar-nav navbar-right">
@@ -38,14 +39,14 @@
 				<form class="navbar-form navbar-right" role="form" action="/users/sign_up" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input type="hidden" name="_method" value="get">
-					<button type="submit" class="btn btn-default">Sign up</button>
+					<button type="submit" class="sign-up">Sign up</button>
 				</form>
 				<form class="navbar-form navbar-right" role="form" action="/users/sign_in" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input type="hidden" name="user[remember_me]" value="0">
 <!-- 					<div class="form-group"><input type="email" placeholder="Email" class="form-control" name="user[email]" required="true"></div>
 					<div class="form-group"><input type="password" placeholder="Password" class="form-control" name="user[password]" required="true"></div> -->
-					<button type="submit" class="btn btn-default">Sign in</button>
+					<button type="submit" class="sign-in">Sign in</button>
 				</form>
 				
 				<% end %>

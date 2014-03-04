@@ -9,6 +9,103 @@
 	margin-bottom:5px; 
 }*/
 
+body {
+	font: 16px;
+	background-color: GhostWhite;
+}
+
+.container {
+	width: 960;
+	height: 542;
+	margin: auto;
+	display: block;
+}
+
+a.title-link {
+	margin-top: 100px;
+}
+
+.navbar {
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: 1px solid;
+	padding-top: 10px; 
+}
+
+.navbar-default {
+	background-color: GhostWhite;
+}
+
+.navbar-collapse.collapse {
+	border: none;
+}
+
+/* GRADIENT 
+.columns-bg {
+  background-image:
+    linear-gradient(
+      to right, 
+      #fffdc2,
+      #fffdc2 15%,
+      #d7f0a2 15%,
+      #d7f0a2 85%,
+      #fffdc2 85%
+    );
+}*/
+
+.navbar-brand {
+/*	letter-spacing: 0.3em;*/
+
+}
+
+#site-title.navbar-brand {
+/*	background-color: #f9fc7e;*/
+}
+
+.sign-out, 
+.sign-up,
+.sign-in {
+	background-color: #f9fc7e;
+	border: none;
+	padding: 0;
+}
+
+.sign-out:hover, 
+.sign-up:hover,
+.sign-in:hover {
+	background-color: GhostWhite;
+}
+
+
+a.poem-line {
+	font-size: 1.5em;
+	line-height: 150%;
+	letter-spacing: 1px;
+	color: #969696; 
+	padding: 1px 2px;
+	text-transform: lowercase;
+}
+
+a.twitter-handle-link {
+	font-size: 16px;
+	font-weight: normal;
+	margin-left: 25px;
+	color: #323232;
+	letter-spacing: 1px;
+}
+
+a:hover{
+	background-color: GhostWhite;
+	text-decoration: none;
+}
+
+.bg-primary {
+	background-color: #f9fc7e;
+	color: #323232;
+	margin-left: 40px;
+}
+
 
 .pull.left {
 /*	border: solid black;*/
@@ -24,6 +121,7 @@
 ul {
 	list-style: none;
 	margin-right: 15px;
+	margin-bottom: 30px;
 }
 
 li {
@@ -54,13 +152,14 @@ a.current.user.email {
 	width: 175px;
 }
 
-
+a.create-poem-button {
+	background-color: f9fc7e;
+}
 
 .btn.btn-lg.btn-primary.btn-block {
 	width: 175px;
 	margin-top: 20px;
 	margin-bottom: 10px;
-	padding: 10px;
 }
 
 .edit-form {
@@ -74,5 +173,22 @@ a.current.user.email {
 	margin-right: 60px;
 }
 
+.fav-poem-link {
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.custom-h3 {
+	color: #969696;
+	background-color: #f9fc7e;
+}
+
+.like-btn {
+	background-color: #f9fc7e;
+	color: #323232;
+	margin-left: 40px;
+	border: none;
+	padding: 1px;
+}
 
 
