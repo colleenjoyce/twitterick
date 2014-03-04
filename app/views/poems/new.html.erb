@@ -2,7 +2,11 @@
 
 <form action="/poems" method="POST">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="text" name="handle" placeholder="Enter twitter handle">
+	<select name="id">
+	<% @twitter_handles.each do |handle| %>
+	<option value="<%= handle.id %>"><%= handle.handle %></option>
+	<% end %>
+	</select>
 	<input type="submit">
 </form>
 
