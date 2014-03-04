@@ -7,6 +7,7 @@ class PoemsController < ApplicationController
 	include PoemConstructor
 
 	def index
+		@coder = HTMLEntities.new
 		@poem = Poem.all.sample
 		@tweets = @poem.poem_tweets.order(:line_num)
 		if (current_user)
