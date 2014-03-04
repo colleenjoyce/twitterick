@@ -60,6 +60,16 @@ def get_num_rhymes(word)
 	get_rhymes(word).count
 end 
 
+def check_twitter_handle(handle)
+	client = get_twitter_client
+	twitter_handle = nil
+	begin
+		twitter_handle = client.user(handle)
+	rescue
+	end
+	twitter_handle
+end
+
 @client = get_twitter_client
 @js = get_all_tweets("justinbieber", "439653103034314753")
 @ja = get_all_tweets("justinbieber")

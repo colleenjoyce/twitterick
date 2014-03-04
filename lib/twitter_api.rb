@@ -28,4 +28,13 @@ module TwitterApi
 			client.user_timeline(user, options)
 		end
 	end
+	def check_twitter_handle(handle)
+		client = get_twitter_client
+		twitter_handle = nil
+		begin
+			twitter_handle = client.user(handle)
+		rescue
+		end
+		twitter_handle
+	end
 end
