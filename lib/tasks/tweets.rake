@@ -44,9 +44,9 @@ namespace :tweets do
 		if !twitter_handles_to_update.empty?
 			twitter_handles_to_update.each do |twitter_handle|
 				if twitter_handle.last_searched
-					tweets = get_all_tweets(handle, twitter_handle.tweets.last.tweet_status_num)	
+					tweets = get_all_tweets(twitter_handle.handle, twitter_handle.tweets.last.tweet_status_num)	
 				else
-					tweets = get_all_tweets(handle)
+					tweets = get_all_tweets(twitter_handle.handlehandle)
 				end
 				push_tweets(twitter_handle.id, tweets)
 			end
