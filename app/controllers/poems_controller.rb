@@ -35,6 +35,7 @@ class PoemsController < ApplicationController
 	end
 
 	def show 
+		@coder = HTMLEntities.new
 		@poem = Poem.find(params[:id])
 		@tweets = @poem.poem_tweets.order(:line_num)
 		if (current_user)
