@@ -59,10 +59,6 @@ a.twitter-handle-link {
 	margin-left: 15px;
 }
 
-.btn-default {
-	margin-top: 14px;
-}
-
 .form-control {
 	width: 200px;
 	margin-top: 10px;
@@ -70,13 +66,22 @@ a.twitter-handle-link {
 }
 
 .panel-default {
-	height: 32px;
+	width: 300px;
+	height: 50px;
 	font-size: 18px;
+	text-align: center;
+}
+
+#handle-submit {
+	height: 40px;
 }
 
 .link-below {
 	color: #68BEAA;
-	font-size: 18px;
+	font-size: 20px;
+	padding: 20px;
+	font-weight: 500;
+	letter-spacing: .5px;
 }
 
 .create-poem-link{
@@ -139,6 +144,33 @@ button.btn.btn-link:hover {
 	font-weight: 500;
 	margin-top: 50px;	
 }
+
+.jumbotron {
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    height: 450px;
+}
+
+h1 {
+	padding: 15px;
+}
+
+
+#handles-select {
+/*	border: solid #e4e4e4;*/
+}
+
+ #handles-select-submit.btn {
+	margin-left: 15px;
+	width: 145px;
+}
+
+/*#handle-select-btn {
+	margin-left: 15px;
+	width: 145px;
+}*/
+
 
 
 /*				.nav .btn-link, 

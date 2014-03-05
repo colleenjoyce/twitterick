@@ -33,7 +33,7 @@
   
   <% current_user.poems.each do |poem| %>
   <li>
-    <a class="fav-poem-link" href="/poems/<% poem.id %>">Poem <%= poem.id %></a>
+    <a class="fav-poem-link" href="/poems/<%= poem.id %>">Poem <%= poem.id %></a>
   </li>
   <% end %>
 </div>
