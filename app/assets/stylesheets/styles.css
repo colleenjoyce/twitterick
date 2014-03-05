@@ -127,6 +127,20 @@ button.btn.btn-link:hover {
 	background-color: #68BEAA;
 }
 
+
+.edit-form,
+.display-likes {
+	padding: 10px;
+}
+
+.fav-poem-link {
+	color: #68BEAA;
+	font-size: 26px;
+	font-weight: 500;
+	margin-top: 50px;	
+}
+
+
 /*				.nav .btn-link, 
 				.nav a, 
 				form.navbar-form.navbar-right

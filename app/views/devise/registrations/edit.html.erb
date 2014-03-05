@@ -1,19 +1,6 @@
 <div class="user-sign">
   <%= devise_error_messages! %>
 
-
-<div class="display-likes">
-  <h2>Likes</h2>
-  
-  <% current_user.poems.each do |poem| %>
-  <li>
-    <a class="fav-poem-link" href="/poems/<% poem.id %>">Poem <%= poem.id %></a>
-  </li>
-
-  <% end %>
-
-</div>
-
 <div class="edit-form">
   <h2>Edit Profile</h2>
 
@@ -36,7 +23,18 @@
    
     <%= f.password_field :current_password, :class => "form-control", :placeholder => "Current Password" %>
 
-    <%= f.submit "Update", :class => "btn btn-lg btn-primary btn-block" %>
+    <%= f.submit "Update", :class => "btn btn-default" %>
+  <% end %>
+</div>
+
+
+<div class="display-likes">
+  <h2>Likes</h2>
+  
+  <% current_user.poems.each do |poem| %>
+  <li>
+    <a class="fav-poem-link" href="/poems/<% poem.id %>">Poem <%= poem.id %></a>
+  </li>
   <% end %>
 </div>
 
