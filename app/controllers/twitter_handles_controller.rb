@@ -7,7 +7,7 @@ class TwitterHandlesController < ApplicationController
 		if twitter_handle.id
 			redirect_to root_url, notice: "Thanks for submitting a new Twitter handle. Be sure to check back to see it featured in a poem."
 		else
-			redirect_to twitter_handles_new_path, alert: "Sorry! There was a problem with the twitter handle submitted."
+			redirect_to twitter_handles_new_path, alert: "Sorry! Either this handle has already been submitted or is not recognized by Twitter."
 		end
 	end
 	def twitter_handle_params
