@@ -70,13 +70,22 @@ a.twitter-handle-link {
 }
 
 .panel-default {
-	height: 32px;
+	width: 300px;
+	height: 50px;
 	font-size: 18px;
+	text-align: center;
+}
+
+#handle-submit {
+	height: 40px;
 }
 
 .link-below {
 	color: #68BEAA;
-	font-size: 18px;
+	font-size: 20px;
+	padding: 20px;
+	font-weight: 700;
+	letter-spacing: .75px;
 }
 
 .create-poem-link{
@@ -140,6 +149,19 @@ button.btn.btn-link:hover {
 	margin-top: 50px;	
 }
 
+.jumbotron {
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    height: 450px;
+}
+
+h1 {
+	padding: 15px;
+}
+
+
+text-align: center;
 
 /*				.nav .btn-link, 
 				.nav a, 
