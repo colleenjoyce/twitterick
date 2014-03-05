@@ -20,7 +20,7 @@ module PoemConstructor
 			used_rhymes_a = []
 			used_twitter_handles_a = []
 			begin
-				tweet0 = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_syllables > ?", num_syll_a)
+				tweet0 = Tweet.where(twitter_handle_id: twitter_handle.id).where("num_rhymes > ?", 5).where("num_syllables > ?", num_syll_a)
 				if (tweet0.count < 10)
 					return false
 				else
