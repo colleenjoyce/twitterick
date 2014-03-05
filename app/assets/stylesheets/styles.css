@@ -2,6 +2,7 @@ body {
 	background-color: #F5F5F5;
 }
 
+
 .navbar-default {
 	background-color: #68BEAA; 
 }
@@ -51,7 +52,7 @@ ul {
 a.poem-line {
 	color: #969696;
 /*	color: #68BEAA;*/
-	font-size: 28px;
+	font-size: 24px;
 
 }
 
@@ -85,6 +86,10 @@ a.twitter-handle-link {
 	letter-spacing: .5px;
 }
 
+.link-below:hover {
+	color: #5dab99;
+}
+
 .create-poem-link{
 	color: #68BEAA;
 	font-size: 28px;
@@ -97,8 +102,9 @@ a.twitter-handle-link {
 	color: #5dab99;
 }
 
+.dislike-button,
 .like-btn {
-	background-color: #F5F5F5;
+	background-color: #eeeeee;
 	color: #323232;
 	margin-left: 40px;
 	border: none;
@@ -157,14 +163,30 @@ h1 {
 	padding: 15px;
 }
 
-
 #handles-select {
 /*	border: solid #e4e4e4;*/
 }
 
- #handles-select-submit.btn {
+#handles-select-submit.btn {
 	margin-left: 15px;
 	width: 145px;
+}
+
+.display-poem {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.again {
+	color: #68BEAA;
+	font-size: 20px;
+	padding: 20px;
+	font-weight: 500;
+	letter-spacing: .5px;
+}
+
+.again:hover {
+	color: #5dab99;
 }
 
 /*#handle-select-btn {

@@ -8,7 +8,7 @@
 		<h6><a class="twitter-handle-link" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a></h6>
 		</p>
 	<% end %>
-	<a href="/poems/new">Again!</a>
+	<a class="again" href="/poems/new">Again!</a>
 	<% if user_signed_in? %>	
 		<% if @liked %>
 			<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
