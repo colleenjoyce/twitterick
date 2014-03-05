@@ -2,7 +2,7 @@
 <h1>Submit a Twitter handle</h1>
 <form action="/twitter_handles" method="POST">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input class="form-control" type="text" name="twitter_handle[handle]" placeholder="@username">
+	<input class="form-control" required="true" type="text" name="twitter_handle[handle]" placeholder="@username">
 	<input type="submit" class="btn btn-default">
 </form>
 </div>
