@@ -47,6 +47,7 @@ a.title-link:hover {
 
 ul {
 	list-style: none;
+	margin-left: 250px;
 }
 
 a.poem-line {
@@ -172,8 +173,8 @@ h1 {
 	width: 145px;
 }
 
-.display-poem {
-	margin-left: 20px;
+.display-random-poem {
+	margin-left: 250px;
 	margin-top: 20px;
 }
 
