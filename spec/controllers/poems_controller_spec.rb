@@ -6,11 +6,17 @@ describe PoemsController do
 			get :index
 			expect(response).to render_template("index")
 		end
+		it "populates an array of poems" do
+			 
+		end
 	end
+
 
 	describe "POST #create" do 
 		it "shows a list of twitter user handles"  
 		
 	end
+
+
 
 end

@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 20140304201614) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["poem_id"], name: "index_likes_on_poem_id", using: :btree
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+  add_index "likes", ["user_id", "poem_id"], name: "index_likes_on_user_id_and_poem_id", unique: true, using: :btree
 
   create_table "poem_tweets", force: true do |t|
     t.integer  "poem_id"
