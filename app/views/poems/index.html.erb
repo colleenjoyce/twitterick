@@ -1,11 +1,11 @@
 <div class="display poem">
 	<ul>
-	<% @tweets.each do |tweet| %>
+	<% @poem_tweets.each do |poem_tweet| %>
 		<li>
-		<a class="poem-line" href="<%= tweet.tweet.tweet_status_url %>">
-		<%= @coder.decode(tweet.tweet.text) %>
+		<a class="poem-line" href="<%= poem_tweet.tweet.tweet_status_url %>">
+		<%= @coder.decode(poem_tweet.tweet.text) %>
 		</a>
-		<h6><a class="twitter-handle-link" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= '@' + tweet.tweet.twitter_handle.handle %></a></h6>
+		<h6><a class="twitter-handle-link" href="https://twitter.com/<%= poem_tweet.tweet.twitter_handle.handle %>"><%= '@' + poem_tweet.tweet.twitter_handle.handle %></a></h6>
 		</li>
 	<% end %>
 	</ul>
