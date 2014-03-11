@@ -1,6 +1,6 @@
 <div class="display-random-poem">
 	<ul>
-	<% @tweets.each do |tweet| %>
+	<% @poem_tweets.each do |tweet| %>
 		<li>
 		<a class="poem-line" href="<%= tweet.tweet.tweet_status_url %>">
 		<%= @coder.decode(tweet.tweet.text) %>

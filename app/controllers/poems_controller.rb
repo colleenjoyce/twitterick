@@ -9,7 +9,7 @@ class PoemsController < ApplicationController
 	def index
 		@coder = HTMLEntities.new
 		@poem = Poem.all.sample
-		@tweets = @poem.poem_tweets.order(:line_num)
+		@poem_tweets = @poem.poem_tweets.order(:line_num)
 		if (current_user)
 			@liked = Like.where(poem: @poem, user: current_user).first
 		end
