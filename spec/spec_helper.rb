@@ -42,5 +42,7 @@ RSpec.configure do |config|
   
   RSpec.configure do |config|
     config.include Devise::TestHelpers, :type => :controller
+    config.color_enabled = true 
+    config.formatter = :documentation
   end
 end
