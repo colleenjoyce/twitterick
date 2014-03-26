@@ -173,6 +173,7 @@ h1 {
 }
 
 .display-random-poem {
+	text-align: center;
 	margin-top: 20px;
 }
 
@@ -186,6 +187,10 @@ h1 {
 
 .again:hover {
 	color: #5dab99;
+}
+
+.display.poem {
+	background-color: yellow;
 }
 
 /*#handle-select-btn {
