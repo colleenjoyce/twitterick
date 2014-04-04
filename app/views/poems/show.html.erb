@@ -2,10 +2,9 @@
 <div class="jumbotron-content">
 	<% @tweets.each do |tweet| %>
 		<p>
-		<a class="poem-line" href="<%= tweet.tweet.tweet_status_url %>">
-		<%= @coder.decode(tweet.tweet.text) %>
-		</a>
-		<h6><a class="twitter-handle-link" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a></h6>
+			<a class="poem-line" href="<%= tweet.tweet.tweet_status_url %>">
+			<%= @coder.decode(tweet.tweet.text) %></a>
+			<h6><a class="twitter-handle-link" href="https://twitter.com/<%= tweet.tweet.twitter_handle.handle %>"><%= "@" + tweet.tweet.twitter_handle.handle %></a></h6>
 		</p>
 	<% end %>
 	<a class="again" href="/poems/new">Again!</a>
@@ -17,7 +16,6 @@
 				<button type="submit" class="like-btn"><i class="fa fa-heart-o fa-lg"></i></button>
 			</form>
 		<% else %>
-
 			<form class="like-button" action=<%=poem_like_path(@poem.id)%> method="post">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 				<input type="hidden" name="like" value="true">

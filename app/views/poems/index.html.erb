@@ -9,9 +9,8 @@
 		</li>
 	<% end %>
 	</ul>
-
-<br>
-<% if user_signed_in? %>	
+	<br>
+	<% if user_signed_in? %>	
 	<% if @liked %>
 		<form class="dislike-button" action=<%=poem_like_path(@poem.id)%> method="post">
 			<input type="hidden" name="like" value="false">
@@ -19,21 +18,13 @@
 			<button type="submit" class="like-btn"><i class="fa fa-heart-o fa-lg"></i></button>
 		</form>
 	<% else %>
-
 		<form class="like-button" action=<%=poem_like_path(@poem.id)%> method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="hidden" name="like" value="true">
 			<button type="submit" class="like-btn" ><i class="fa fa-heart fa-lg"></i></button>	
 		</form>
 	<% end %>
-<% end %>
-<br>
-<a href="/poems/new" class="create-poem-link">Create a poem of your own!</a>
-
+	<% end %>
+	<br>
+	<a href="/poems/new" class="create-poem-link">Create a poem of your own!</a>
 </div>
-
-
-
-
-
-

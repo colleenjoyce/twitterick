@@ -21,33 +21,25 @@
 				<a class="title-link" href="/">Twitterick</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<% if user_signed_in? %>
-				
+				<% if user_signed_in? %>		
 				<form class="navbar-form navbar-right" role="form" action="/users/sign_out" method="post">
 					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 					<input type="hidden" name="_method" value="delete">
 					<button type="submit" class="btn btn-link">Sign out</button>
 				</form>
-				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="email-link" href="/users/edit"><%= current_user.email %></a></li>
 				</ul>
-
 				<% else %>
-				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/users/sign_in">Sign in</a></li>
 					<li><a href="/users/sign_up">Sign up</a></li>
 				</ul>
-
 				</div>
-				
 				<% end %>
 			</div>
 		</div>
 	</div>
-
-
 	<div class="container">
 		<% if notice %>
 		<div class="alert alert-success alert-dismissable">
@@ -65,9 +57,9 @@
 		<%= yield %>
 	</div>
 	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container">
-    	<small>Made by Isaac Torres &amp; Colleen Joyce</small>
-  </div>
-</nav>
+		<div class="container">
+		   	<small>Made by Isaac Torres &amp; Colleen Joyce</small>
+		</div>
+	</nav>
 </body>
 </html>

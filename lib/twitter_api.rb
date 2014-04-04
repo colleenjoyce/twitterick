@@ -28,6 +28,7 @@ module TwitterApi
 			client.user_timeline(user, options)
 		end
 	end
+
 	def check_twitter_handle(handle)
 		client = get_twitter_client
 		twitter_handle = nil
@@ -67,9 +68,7 @@ module TwitterApi
 			twitter_handle_id: twitter_handle_id,
 			tweet_status_url: "https://twitter.com" + tweet.url.path, 
 			tweet_status_num: tweet.id,
-			last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last
-		)
+			last_word: tweet.text.gsub(/[^\s\or\w]/,"").split(" ").last )
 		end
 	end
-
 end
